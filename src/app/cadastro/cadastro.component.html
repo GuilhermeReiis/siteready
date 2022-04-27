@@ -1,0 +1,37 @@
+<div class="centralizar">
+
+    <form [formGroup]="cadastro" (submit)="cadastrar()">
+        <div class="formulario">
+            <div class="on_dados">
+                <p class="text">NOME</p>
+                <input formControlName="name" class="entrada" id="nome"type="string">
+
+                <p class="text">CPF</p>
+                <input formControlName="cpf" class="entrada" id="cpf"type="number">
+
+                <p class="text">EMAIL</p>
+                <input formControlName="email" class="entrada" id="email" type="email">
+
+                <p class="text">SENHA</p>
+                <input formControlName="password" class="entrada" id="password" type="string">
+                
+        
+            </div>
+            <div class="button">
+                <button id="cadastrar">CADASTRAR</button>
+                <button id="voltar" routerLink="../">VOLTAR</button>
+            </div>
+    
+        </div>
+
+    </form>
+    <div class="d-lg-block d-none col imagen">
+        <img class="image" src="../../assets/Astronaut suit-amico.svg" />
+      </div>
+</div>
+
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap');
+</style>

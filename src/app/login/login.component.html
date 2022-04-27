@@ -1,0 +1,29 @@
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap');
+
+</style>
+<div class="centralizar">
+    <div class="painel">
+        <form [formGroup]="user" (submit)="signIn()">
+            <div class="on_dados">
+                <p class="text">EMAIL</p>
+                <input  formControlName="email" id="email" class="entrada" type="email" >
+                <p class="text">SENHA</p>
+                <input formControlName="password" id="senha" class="entrada" type="password">
+            </div>
+            <div class="check-box">
+                <input type="checkbox">
+                <p id="text-check">SALVAR LOGIN</p>
+            </div>
+            <div   class="button">
+                <button id="login" >LOGIN</button>
+                <button id="voltar" routerLink="">VOLTAR</button>
+            </div>
+            <div class="erro" *ngIf="isSubmitted && teste.error">
+                <mat-card class="erro">{{teste.message}}</mat-card>
+            </div>
+        </form>
+    </div>
+</div>

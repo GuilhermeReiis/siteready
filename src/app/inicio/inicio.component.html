@@ -1,0 +1,30 @@
+
+<mat-toolbar>
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
+<span>SPACE</span>
+<span class="example-spacer"></span>
+<button id="warn" mat-raised-button color="warn">Sair</button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav t" mode="side">
+      <button (click)="goToVendas()" mat-raised-button>
+        VENDAS
+      </button>
+      <button (click)="goToCursos()" mat-raised-button>
+        CURSOS
+      </button>
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        CONFIGURAÇÕES
+      </button>
+    </mat-drawer>
+    
+    <ng-container *ngIf="showVendas">
+        <app-vendas></app-vendas>
+    </ng-container>
+    <ng-container *ngIf="showCursos">
+        <app-cursos></app-cursos>
+    </ng-container>
+</mat-drawer-container>

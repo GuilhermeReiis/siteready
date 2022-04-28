@@ -27,6 +27,11 @@ import { CursosComponent } from './cursos/cursos.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.component';
+
+
+
 
 
 
@@ -48,8 +53,9 @@ import {MatIconModule} from '@angular/material/icon';
     CadastroComponent,
     InicioComponent,
     VendasComponent,
-    CadastroCursosComponent,
     CursosComponent,
+    CadastroCursosComponent,
+    AlterarCursosComponent
   
     
     
@@ -72,6 +78,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatTableModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

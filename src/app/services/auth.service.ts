@@ -62,4 +62,8 @@ export class AuthService {
     return this.http.post<any>(this.URL + "/curso", curso);
 
   }
+
+  alterarCurso(curso: ICurso,id: string){
+    return this.http.put<any>(this.URL + "/curso/" +id, curso);
+  }
 }

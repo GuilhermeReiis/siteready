@@ -1,0 +1,22 @@
+button{
+    margin: 10px;
+}
+
+.ALTERAR{
+    background-color: #2D706F;
+}
+
+.REMOVER{
+    background-color: #D91B0B;
+}
+
+table{
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.teste{
+    background-color: red;
+}

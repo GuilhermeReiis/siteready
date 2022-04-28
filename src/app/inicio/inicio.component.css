@@ -18,9 +18,26 @@
    
 }
 
-.example-sidenav{
-   
-}  
+mat-toolbar{
+  background-color: #263238;
+  color: aliceblue;
+  
+}
 
-ng-deep mat-drawer{ display: flex !important;
-    flex-direction: column !important;} 
+mat-drawer{
+  background-color: #263238;
+  color: aliceblue;
+}
+
+.centraliza{
+  display: flex;
+  flex-direction: column;
+}
+
+button{
+  background-color: #6AEBA0;
+  margin: 30px;
+}
+
+/* ng-deep mat-drawer{ display: flex !important;
+    flex-direction: column !important;}  */

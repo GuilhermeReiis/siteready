@@ -4,12 +4,17 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
 
 
 const routes: Routes = [
   {
     path:'',
     component: HomeComponent
+  },
+  {
+    path:'Cadastro_Curso',
+    component: CadastroCursosComponent
   },
   {
     path:'login',

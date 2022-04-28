@@ -10,15 +10,17 @@
 
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav t" mode="side">
-      <button (click)="goToVendas()" mat-raised-button>
-        VENDAS
-      </button>
-      <button (click)="goToCursos()" mat-raised-button>
-        CURSOS
-      </button>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        CONFIGURAÇÕES
-      </button>
+      <div class="centraliza">
+        <button (click)="goToVendas()" mat-raised-button>
+          VENDAS
+        </button>
+        <button (click)="goToCursos()" mat-raised-button>
+          CURSOS
+        </button>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+          CONFIGURAÇÕES
+        </button>
+      </div>
     </mat-drawer>
     
     <ng-container *ngIf="showVendas">

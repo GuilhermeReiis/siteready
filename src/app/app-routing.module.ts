@@ -5,12 +5,17 @@ import { HomeComponent } from './views/home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
+import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 
 
 const routes: Routes = [
   {
     path:'',
     component: HomeComponent
+  },
+  {
+    path:'cadastra_Aluno',
+    component: CadastroAlunoComponent
   },
   {
     path:'Cadastro_Curso',

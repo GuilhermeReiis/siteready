@@ -1,5 +1,14 @@
-mat-grid-list{
-    background-color: #6AEBA0;
+.example-card{
+    border-radius: 10px;
+}
+
+
+.text{
+    color: aliceblue;
+}
+
+.text2{
+    color: #6AEBA0;
 }
 
 mat-card{
@@ -10,4 +19,6 @@ mat-card{
 
 button{
     background-color: #6AEBA0;
+    margin: 10px;
 }
+

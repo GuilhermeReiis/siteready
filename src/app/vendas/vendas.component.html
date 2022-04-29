@@ -1,19 +1,28 @@
+<div class="demo-button-container">
+  <div class="centralizar">
+    <button (click)="addAluno()" mat-raised-button class="demo-button ADICIONAR">
+      ADD ALUNO
+      
+    </button>
+  </div>
+</div>
+
 <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let curso of cursos">
         <mat-card class="example-card">
-            <mat-card-header>
+            <mat-card-header >
               <div ></div>
-              <mat-card-title>{{curso.curso}}</mat-card-title>
-              <mat-card-subtitle>Graduação - Tempo: {{curso.duracao}} Anos</mat-card-subtitle>
+              <mat-card-title class="text">{{curso.curso}}</mat-card-title>
+              <mat-card-subtitle class="text">Graduação - Tempo: {{curso.duracao}} Anos</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <h1>{{curso.valor}}</h1>
-              <p>
+                <h1 class="text2">{{curso.valor}}</h1>
+              <p class="text">
                 {{curso.descricao}}
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>COMPRAR</button>
+              <button mat-button>VENDER</button>
             </mat-card-actions>
           </mat-card>
 

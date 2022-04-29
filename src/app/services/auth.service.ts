@@ -20,7 +20,15 @@ interface ICurso{
   duracao: number,
   valor: number,
   descricao: string,
-  }
+}
+
+interface IAluno{
+  name: string,
+  email: EmailValidator,
+  age:number,
+  tell:number,
+  curso:string,
+}
 
 @Injectable({
   providedIn: "root",
@@ -66,4 +74,24 @@ export class AuthService {
   alterarCurso(curso: ICurso,id: string){
     return this.http.put<any>(this.URL + "/curso/" +id, curso);
   }
+
+  // //////////////////////////////////////////////////////////////
+
+  addAluno(aluno: IAluno){
+    return this.http.post<any>(this.URL + "/aluno", aluno);
+
+  }
+
+  searchAluno(){
+    return this.http.get<any>(this.URL + "/aluno");
+  }
+
+  deleteAluno(aluno: IAluno, id: string){
+    return this.http.delete<any>(this.URL + "/aluno/" +id);
+  }
+
+  alterarAluno(aluno: IAluno,id: string){
+    return this.http.put<any>(this.URL + "/aluno/" +id, aluno);
+  }
+
 }

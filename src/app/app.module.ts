@@ -29,6 +29,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.component';
+import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
+import { AlunosComponent } from './alunos/alunos.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 
@@ -55,7 +59,9 @@ import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.componen
     VendasComponent,
     CursosComponent,
     CadastroCursosComponent,
-    AlterarCursosComponent
+    AlterarCursosComponent,
+    CadastroAlunoComponent,
+    AlunosComponent
   
     
     
@@ -79,6 +85,7 @@ import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.componen
     MatSidenavModule,
     MatIconModule,
     MatDialogModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

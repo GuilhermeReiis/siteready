@@ -17,6 +17,9 @@
         <button (click)="goToCursos()" mat-raised-button>
           CURSOS
         </button>
+        <button (click)="goToAlunos()" mat-raised-button>
+          ALUNOS
+        </button>
         <button (click)="showFiller = !showFiller" mat-raised-button>
           CONFIGURAÇÕES
         </button>
@@ -29,4 +32,7 @@
     <ng-container *ngIf="showCursos">
         <app-cursos></app-cursos>
     </ng-container>
+    <ng-container *ngIf="showAlunos">
+      <app-alunos></app-alunos>
+  </ng-container>
 </mat-drawer-container>

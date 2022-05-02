@@ -10,10 +10,6 @@
 <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->
   
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let alunos">1</td>
-  </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -30,19 +26,24 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="symbol">
     <th mat-header-cell *matHeaderCellDef>Email</th>
-    <td mat-cell *matCellDef="let alunos">{{alunos.Email}}</td>
+    <td mat-cell *matCellDef="let alunos">{{alunos.email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="tell">
+    <th mat-header-cell *matHeaderCellDef>Telefone</th>
+    <td mat-cell *matCellDef="let alunos">{{alunos.tell}}</td>
   </ng-container>
 
   <ng-container matColumnDef="remove">
     <th mat-header-cell *matHeaderCellDef>Editar</th>
     <td mat-cell *matCellDef="let element">
-      <!-- <button mat-raised-button (click)="alterarAluno(element)" class="demo-button ALTERAR">
+      <button mat-raised-button (click)="alterarAluno(element)" class="demo-button ALTERAR">
         ALTERAR
-      </button> -->
+      </button>
 
-      <!-- <button mat-raised-button (click)="deleteAlunos(element)" class="demo-button REMOVER">
+      <button mat-raised-button (click)="deleteAlunos(element)" class="demo-button REMOVER">
         REMOVER
-      </button> -->
+      </button>
     </td>
   </ng-container>
 
@@ -58,16 +59,16 @@
 
 <div>
   <h3>
-    Click Log
+    <!-- Click Log -->
   </h3>
 </div>
 
 <div *ngIf="!clickedRows.size">
-  Clicked rows will be logged here
+  <!-- Clicked rows will be logged here -->
 </div>
 
 <ul>
   <li *ngFor="let clickedRow of clickedRows">
-    Clicked on {{clickedRow.name}}
+    <!-- Clicked on {{clickedRow.name}} -->
   </li>
 </ul>

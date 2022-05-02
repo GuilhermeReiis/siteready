@@ -1,3 +1,7 @@
+table{
+    width: 100%;
+    height: auto;
+}
 
 button{
     margin: 10px;
@@ -11,11 +15,7 @@ button{
     background-color: #D91B0B;
 }
 
-table{
-    width: 100%;
-    height: 100%;
-    
-}
+
 
 
 .teste{

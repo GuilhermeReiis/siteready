@@ -1,0 +1,80 @@
+.centralizar{
+    font-family:'inter';
+    /* background-color: #263238; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: -webkit-fill-available;
+    
+}
+
+
+.formulario{
+  
+    width: 274px;
+    height: 490px;
+    background: #F8F2F2;
+    border-radius: 12px;
+}
+/* ///////////////////////////////////////FUNDO//////////////////////////////// */
+
+.on_dados {
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.text{
+    display: flex;
+    justify-content: start; 
+    opacity: 50%;
+    font-size: 20px;
+    /* alinha texto no meio */
+}
+  
+
+.entrada {
+
+    height: 40px;
+    border-radius: 8px;
+    background: #C4C4C4;
+    border: none;
+    
+}
+
+/* //////////////////////////ENTRADA DE DADOS////////////////////////////////////////// */
+
+.button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin: 10px;
+}
+  
+#cadastrar {
+    background-color: #6AEBA0;
+    border-radius: 8px;
+    width: 156px;
+    height: 44px;
+    border: none;
+}
+
+
+#voltar {
+    background-color: #6AEBA0;
+    border-radius: 8px;
+    width: 70px;
+    height: 44px;
+    border: none;
+  
+    margin: 10px;
+}
+
+.teste{
+    background-color: red !important;
+}

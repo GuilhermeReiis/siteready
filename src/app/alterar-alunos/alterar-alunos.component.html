@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Alterar Alunos</h1>
+
+<div mat-dialog-actions class>
+  
+    <div class="centralizar">
+
+        <form [formGroup]="alunos" (submit)="test()">
+             <div class="formulario">
+                <div class="on_dados">
+                    <p class="text">NOME</p>
+                    <input formControlName="name" class="entrada" id="curso"type="string">
+
+                    <p class="text">IDADE</p>
+                    <input formControlName="age" class="entrada" id="duracao"type="number">
+
+                    <p class="text">EMAIL</p>
+                    <input formControlName="email" class="entrada" id="valor" type="email">
+
+                    <p class="text">TELEFONE</p>
+                    <input formControlName="tell" class="entrada" id="descricao" type="string">
+                            
+                    
+                </div>
+                <div class="button">
+                    <button id="cadastrar">ALTERAR</button>
+                    <button (click)="cancelar()"id="voltar">VOLTAR</button>
+                </div>
+            </div>
+        </form>       
+
+   
+</div>
+
+</div>
+
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap');
+</style>

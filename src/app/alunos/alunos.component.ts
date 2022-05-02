@@ -3,12 +3,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
 import { CadastroAlunoComponent } from '../cadastro-aluno/cadastro-aluno.component';
+import { AlterarAlunosComponent } from '../alterar-alunos/alterar-alunos.component';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+  tell: number;
 }
 
 @Component({
@@ -18,10 +20,10 @@ export interface PeriodicElement {
 })
 export class AlunosComponent implements OnInit {
   displayedColumns: string[] = [
-    'position',
     'name',
     'weight',
     'symbol',
+    'tell',
     'remove',
   ];
   panelOpenState = false;
@@ -44,6 +46,25 @@ export class AlunosComponent implements OnInit {
     });
   }
 
+  alterarAluno(element: any): void {
+    this.clickedRows.clear();
+    this.clickedRows.add(element);
+    const id = this.clickedRows.values().next().value._id;
+
+    console.log(id)
+
+    const dialogRef = this.dialog.open(AlterarAlunosComponent, {
+      panelClass: 'teste',
+      data:{
+        _id:id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
   addAluno(): void {
     const dialogRef = this.dialog.open(CadastroAlunoComponent, {
       panelClass: 'teste',
@@ -53,4 +74,24 @@ export class AlunosComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  deleteAlunos(element: any) {
+    this.clickedRows.clear();
+    this.clickedRows.add(element);
+    const id = this.clickedRows.values().next().value._id;
+
+    console.log(id)
+
+    this.taskServices.deleteAlunos(id).subscribe(
+      (res) => {
+        console.log(res);
+       
+      },
+      (err) => {
+        console.log(err.error)
+
+      }
+    );
+  }
+
 }

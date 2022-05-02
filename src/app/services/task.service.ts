@@ -41,6 +41,10 @@ export class TaskService {
     return this.http.delete(`${this.URL}/curso/${id}`);
   }
 
+  deleteAlunos(id: string) {
+    return this.http.delete(`${this.URL}/aluno/${id}`);
+  }
+
   alterarProject(id: string) {
     return this.http.delete(`${this.URL}/alterar/${id}`);
   }

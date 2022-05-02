@@ -32,6 +32,7 @@ import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.componen
 import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { AlterarAlunosComponent } from './alterar-alunos/alterar-alunos.component';
 
 
 
@@ -61,7 +62,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CadastroCursosComponent,
     AlterarCursosComponent,
     CadastroAlunoComponent,
-    AlunosComponent
+    AlunosComponent,
+    AlterarAlunosComponent
   
     
     

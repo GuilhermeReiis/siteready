@@ -1,3 +1,14 @@
+.ok{
+    display: flex;
+    
+}
+
+table{
+    width: 100%;
+    height: auto;
+}
+
+
 .example-card{
     border-radius: 10px;
 }
@@ -22,3 +33,6 @@ button{
     margin: 10px;
 }
 
+.demo-row-is-clicked{
+    background-color: #6AEBA0;
+}

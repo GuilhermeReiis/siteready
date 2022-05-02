@@ -35,8 +35,9 @@ export class CadastroAlunoComponent implements OnInit {
       email: ["",[Validators.required] ],
       age: ["",[Validators.required] ],
       tell: ["",[Validators.required] ],
-      curso: ["",[Validators.required] ],
+      curso: [this.curso,[Validators.required] ],
     });
+    
   }
   
 
@@ -58,7 +59,11 @@ export class CadastroAlunoComponent implements OnInit {
 
   send() {
     this.isSubmitted=true
-    console.log(this.aluno.controls)
+
+   const curso = this.aluno.value.curso.value.map((item:any )=> item.curso)
+    this.aluno.value.curso = curso
+
+    console.log(this.aluno.value,curso)
     this.authService.addAluno(this.aluno.value).subscribe(
       (res) => {
         console.log(res);
@@ -73,7 +78,7 @@ export class CadastroAlunoComponent implements OnInit {
       
       }
     );
-    console.log("cadstro ok")
+    console.log(this.curso)
     this.dialogRef.close();
     this.ngOnInit();
   }

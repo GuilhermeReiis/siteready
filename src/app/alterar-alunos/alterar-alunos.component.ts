@@ -47,6 +47,7 @@ export class AlterarAlunosComponent implements OnInit {
     });
   }
 
+
   cancelar(): void {
     this.dialogRef.close();
     let carro = 'gol'

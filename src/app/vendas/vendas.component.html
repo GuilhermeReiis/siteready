@@ -1,13 +1,30 @@
-<div class="demo-button-container">
-  <div class="centralizar">
-    <button (click)="addAluno()" mat-raised-button class="demo-button ADICIONAR">
-      ADD ALUNO
-      
-    </button>
+<div class="ok">
+  <div class="demo-button-container">
+    <div class="centralizar">
+      <button
+        (click)="addAluno()"
+        mat-raised-button
+        class="demo-button ADICIONAR"
+      >
+        ADD ALUNO
+      </button>
+    </div>
+  </div>
+  
+  <div class="demo-button-container">
+    <div class="vender">
+      <button
+        (click)="addAluno()"
+        mat-raised-button
+        class="demo-button ADICIONAR"
+      >
+        VENDER
+      </button>
+    </div>
   </div>
 </div>
 
-<mat-grid-list cols="2" rowHeight="2:1">
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let curso of cursos">
         <mat-card class="example-card">
             <mat-card-header >
@@ -29,4 +46,40 @@
     </mat-grid-tile>
 
    
-</mat-grid-list>
+</mat-grid-list> -->
+
+<table mat-table [dataSource]="cursos" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef>Curso</th>
+    <td mat-cell *matCellDef="let curso">{{ curso.curso }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="duracao">
+    <th mat-header-cell *matHeaderCellDef>Tempo</th>
+    <td mat-cell *matCellDef="let curso">{{ curso.duracao }} Anos</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let curso">R$ {{ curso.valor }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    (click)="addAndRemoveClassRow(row, !row.enabled)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns"
+  ></tr>
+</table>
+
+<div *ngIf="!clickedRows.size">Clicked rows will be logged here</div>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Selecionado: {{ clickedRow.curso }}
+  </li>
+</ul>

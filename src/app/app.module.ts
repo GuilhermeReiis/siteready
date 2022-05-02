@@ -33,7 +33,8 @@ import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.componen
 import { AlunosComponent } from './alunos/alunos.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AlterarAlunosComponent } from './alterar-alunos/alterar-alunos.component';
-
+import { NgxMaskModule } from 'ngx-mask';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -88,6 +89,8 @@ import { AlterarAlunosComponent } from './alterar-alunos/alterar-alunos.componen
     MatIconModule,
     MatDialogModule,
     MatExpansionModule,
+    NgxMaskModule.forRoot(),
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

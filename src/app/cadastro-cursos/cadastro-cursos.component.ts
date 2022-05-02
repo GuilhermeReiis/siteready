@@ -46,19 +46,25 @@ deleteCurso(num:number){
   send() {
     this.isSubmitted=true
     console.log(this.curso.controls)
+    
     this.authService.createCourse(this.curso.value).subscribe(
       (res) => {
         console.log(res);
         localStorage.setItem("token", res.token);
         this.router.navigate(["/inicio"]);
+        
       },
       (err) => {
         
         this.teste.message = err.error.message
         this.teste.error = err.error.error
         console.log(err.error)
-      
+
       }
+      
     );
+    console.log("fechar cadastro curso")
+    this.dialogRef.close();
+    this.ngOnInit();
   }
 }

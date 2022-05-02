@@ -62,6 +62,9 @@ export class AlterarCursosComponent implements OnInit {
       
       }
     );
+    console.log("5555")
+    this.dialogRef.close();
+    this.ngOnInit();
   }
 
 

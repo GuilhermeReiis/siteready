@@ -46,12 +46,11 @@ export class AlunosComponent implements OnInit {
     });
   }
 
+ 
   alterarAluno(element: any): void {
     this.clickedRows.clear();
     this.clickedRows.add(element);
     const id = this.clickedRows.values().next().value._id;
-
-    console.log(id)
 
     const dialogRef = this.dialog.open(AlterarAlunosComponent, {
       panelClass: 'teste',
@@ -61,7 +60,10 @@ export class AlunosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      
+      console.log('fechado',result);
+      this.ngOnInit();
+      
     });
   }
 
@@ -72,6 +74,7 @@ export class AlunosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
 
@@ -85,6 +88,7 @@ export class AlunosComponent implements OnInit {
     this.taskServices.deleteAlunos(id).subscribe(
       (res) => {
         console.log(res);
+        this.ngOnInit();
        
       },
       (err) => {

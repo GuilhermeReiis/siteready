@@ -44,6 +44,7 @@ export class CursosComponent implements OnInit {
 
   closeDialog() {
     this.dialog.closeAll();
+    this.ngOnInit();
   }
 
   openModal() {
@@ -58,6 +59,7 @@ export class CursosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
 
@@ -77,6 +79,7 @@ export class CursosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
 
@@ -90,6 +93,7 @@ export class CursosComponent implements OnInit {
     this.taskServices.deleteProject(id).subscribe(
       (res) => {
         console.log(res);
+        this.ngOnInit();
        
       },
       (err) => {

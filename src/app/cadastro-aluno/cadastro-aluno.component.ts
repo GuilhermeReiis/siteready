@@ -3,6 +3,11 @@ import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import { MatDialogRef } from '@angular/material/dialog';
+import { AlunosComponent } from '../alunos/alunos.component';
+import { TaskService } from '../services/task.service';
+
+
+
 
 @Component({
   selector: 'app-cadastro-aluno',
@@ -12,13 +17,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class CadastroAlunoComponent implements OnInit {
   aluno: FormGroup;
   isSubmitted = false
+  cursos: any = [];
+  dataSource = TaskService;
+  curso = new FormControl();
+  cursoList: any = []
 
   teste = {message:'', error:false}
   constructor(
     public dialogRef: MatDialogRef<CadastroAlunoComponent>,
     private fBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private taskServices: TaskService
   ) { 
     this.aluno = this.fBuilder.group({
       name: ["",[Validators.required] ],
@@ -32,6 +42,10 @@ export class CadastroAlunoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.aluno)
+    this.taskServices.getTasks().subscribe((res: any) => {
+      this.cursoList = res.cursos;
+    });
+    
   }
 
   cancelar(): void {
@@ -59,9 +73,12 @@ export class CadastroAlunoComponent implements OnInit {
       
       }
     );
+    console.log("cadstro ok")
+    this.dialogRef.close();
+    this.ngOnInit();
   }
 
-
+  
 
 
 }

@@ -9,6 +9,7 @@
                 <div class="on_dados">
                     <p class="text">Nome</p>
                     <input formControlName="name" class="entrada" id="curso"type="string">
+                    
 
                     <p class="text">EMAIL</p>
                     <input formControlName="email" class="entrada" id="duracao"type="string">
@@ -19,8 +20,22 @@
                     <p class="text">TELEFONE</p>
                     <input formControlName="tell" class="entrada" id="descricao" type="number">
 
-                    <p class="text">CURSO</p>
-                    <input formControlName="curso" class="entrada" id="descricao" type="string">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Toppings</mat-label>
+                        <mat-select [formControl]="curso" multiple>
+                          <mat-select-trigger>
+                            {{cursos.value ? cursos.value[0] : ''}}
+                            <span *ngIf="cursos.value?.length > 1" class="example-additional-selection">
+                              (+{{cursos.value.length - 1}} {{cursos.value?.length === 2 ? 'other' : 'others'}})
+                            </span>
+                          </mat-select-trigger>
+                          <mat-option *ngFor="let cursos of cursoList" [value]="cursos">{{cursos.curso}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      
+                    <!-- <p class="text">CURSO</p>
+                    <input formControlName="curso" class="entrada"  id="descricao" type="string"> -->
                             
                     
                 </div>

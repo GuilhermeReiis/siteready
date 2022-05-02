@@ -5,7 +5,10 @@ import { Router } from "@angular/router";
 import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+
+
 import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-alterar-alunos',
@@ -16,8 +19,10 @@ export class AlterarAlunosComponent implements OnInit {
   alunos: FormGroup;
   isSubmitted = false
 
-
+  cursos: any = [];
   teste = {message:'', error:false}
+  taskServices: any;
+  
   constructor(
     public dialogRef: MatDialogRef<AlterarAlunosComponent>,
     private fBuilder: FormBuilder,
@@ -33,8 +38,13 @@ export class AlterarAlunosComponent implements OnInit {
     });
   }
 
+  
+
   ngOnInit(): void {
     console.log(this.data)
+    this.taskServices.getTasks().subscribe((res: any) => {
+      this.cursos = res.cursos;
+    });
   }
 
   cancelar(): void {
@@ -60,6 +70,12 @@ export class AlterarAlunosComponent implements OnInit {
         console.log(err.error)
       
       }
+      
     );
+    console.log("fechando alterar")
+    this.dialogRef.close();
+    this.ngOnInit();
   }
+
+
 }

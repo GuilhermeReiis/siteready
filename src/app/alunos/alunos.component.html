@@ -1,15 +1,73 @@
-<mat-accordion >
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title  mat-cell *matCellDef="let alunos">
-          {{alunos.name}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{alunos.curso}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
- </mat-accordion>
+<div class="demo-button-container">
+  <div class="centralizar">
+    <button (click)="addAluno()" mat-raised-button class="demo-button ADICIONAR">
+      ADICIONAR
+      
+    </button>
+  </div>
+</div>
+
+<table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
   
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let alunos">1</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let alunos">{{alunos.name}}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef>idade</th>
+    <td mat-cell *matCellDef="let alunos">{{alunos.age}}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let alunos">{{alunos.Email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="remove">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let element">
+      <!-- <button mat-raised-button (click)="alterarAluno(element)" class="demo-button ALTERAR">
+        ALTERAR
+      </button> -->
+
+      <!-- <button mat-raised-button (click)="deleteAlunos(element)" class="demo-button REMOVER">
+        REMOVER
+      </button> -->
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>
+
+<div>
+  <h3>
+    Click Log
+  </h3>
+</div>
+
+<div *ngIf="!clickedRows.size">
+  Clicked rows will be logged here
+</div>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Clicked on {{clickedRow.name}}
+  </li>
+</ul>

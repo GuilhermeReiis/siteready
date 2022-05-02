@@ -12,6 +12,10 @@ export class TaskService {
     return this.http.get<any>(this.URL + "/cursos");
   }
 
+  getAlunos() {
+    return this.http.get<any>(this.URL + "/aluno");
+  }
+
   getPrivateProject() {
     return this.http.get<any>(this.URL + "/");
   }

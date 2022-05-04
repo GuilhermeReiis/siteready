@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
 import { CadastroAlunoComponent } from '../cadastro-aluno/cadastro-aluno.component';
 import { AlterarAlunosComponent } from '../alterar-alunos/alterar-alunos.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -27,7 +28,7 @@ export class AlunosComponent implements OnInit {
     'remove',
   ];
   panelOpenState = false;
-  dataSource = TaskService;
+  dataSource = new MatTableDataSource<PeriodicElement>();
   clickedRows = new Set<PeriodicElement>();
 
   alunos: any = [];
@@ -41,9 +42,13 @@ export class AlunosComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskServices.getAlunos().subscribe((res) => {
-      this.alunos = res.aluno;
-      console.log(res.aluno);
+      this.dataSource.data = res.aluno;
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
  

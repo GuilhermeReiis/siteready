@@ -7,7 +7,18 @@
   </div>
 </div>
 
-<table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
+<img id="img" src="../../assets/search (2).png" alt="lupa">
+<input
+  autocomplete="off"
+  matInput
+  (keyup)="applyFilter($event)"
+  placeholder="aluno"
+  #input
+  id="filtro"
+/>
+<br />
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->
   
 

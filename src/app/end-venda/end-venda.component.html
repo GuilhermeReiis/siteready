@@ -1,0 +1,26 @@
+<mat-dialog-content class="mat-typography">
+  <form action="venda">
+    <h1>Finalização da venda</h1>
+    <h2>Cursos selecionados:</h2>
+    <p>{{ listCourse.join("  -  ") }}</p>
+    <br />
+    <h2>Vendedor: {{ vendedor }}</h2>
+    <mat-label>Aluno</mat-label>
+    <mat-select>
+      <mat-option [value]="selectedAluno" *ngFor="let element of aluno">{{
+        element.name
+      }}</mat-option>
+    </mat-select>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end-venda">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="finalizarVenda()"
+  >
+    Finalizar
+  </button>
+</mat-dialog-actions>

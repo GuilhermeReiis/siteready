@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AlterarCursosComponent } from '../alterar-cursos/alterar-cursos.component';
 import { CadastroCursosComponent } from '../cadastro-cursos/cadastro-cursos.component';
@@ -25,9 +26,8 @@ export class CursosComponent implements OnInit {
     'symbol',
     'remove',
   ];
-  dataSource = TaskService;
   clickedRows = new Set<PeriodicElement>();
-
+  dataSource = new MatTableDataSource<PeriodicElement>();
   cursos: any = [];
 
   constructor(
@@ -38,8 +38,13 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskServices.getTasks().subscribe((res) => {
-      this.cursos = res.cursos;
+      this.dataSource.data = res.cursos;
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   closeDialog() {

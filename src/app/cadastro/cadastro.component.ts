@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,7 +17,8 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
   ) {
     this.cadastro = this.fBuilder.group({
       name: ["",[Validators.required] ],
@@ -41,12 +43,19 @@ export class CadastroComponent implements OnInit {
       },
       (err) => {
         
-        this.teste.message = err.error.message
-        this.teste.error = err.error.error
+        this._snackBar.open(err.error.message);
         console.log(err.error)
       
       }
+      
     );
+    
+    
   }
+
+  closeSnackBar(){
+    this._snackBar.dismiss()
+  }
+  
 
 }

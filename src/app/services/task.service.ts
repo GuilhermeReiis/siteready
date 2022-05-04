@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class TaskService {
   private URL = "http://localhost:8080";
+  static filter: string;
   constructor(private http: HttpClient) {}
 
   getTasks() {
@@ -14,6 +15,14 @@ export class TaskService {
 
   getAlunos() {
     return this.http.get<any>(this.URL + "/aluno");
+  }
+
+  getVendas() {
+    return this.http.get<any>(this.URL + "/venda");
+  }
+
+  addVenda(venda: any){
+    return this.http.post<any>(this.URL + "/venda", venda);
   }
 
   getPrivateProject() {
@@ -48,4 +57,9 @@ export class TaskService {
   alterarProject(id: string) {
     return this.http.delete(`${this.URL}/alterar/${id}`);
   }
+
+  searchUser() {
+    return this.http.get<any>(this.URL + "/user");
+  }
+  
 }

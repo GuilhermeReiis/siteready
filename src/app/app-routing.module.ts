@@ -6,6 +6,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
 import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
+import { VendasComponent } from './vendas/vendas.component';
+import { EndVendaComponent } from './end-venda/end-venda.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,10 @@ const routes: Routes = [
   {
     path:'inicio',
     component: InicioComponent
+  },
+  {
+    path:'endVenda',
+    component: EndVendaComponent
   },
   
 ];

@@ -1,3 +1,16 @@
+#img{
+    margin: 10px;
+    
+    
+}
+
+#filtro{
+    height: 40px;
+    border-radius: 8px;
+    background: #C4C4C4;
+    border: none;
+}
+
 table{
     width: 100%;
     height: auto;

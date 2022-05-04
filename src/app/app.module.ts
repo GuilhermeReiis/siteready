@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './login/login.component';
+import { EndVendaComponent } from './end-venda/end-venda.component';
 
 
 
@@ -35,6 +36,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AlterarAlunosComponent } from './alterar-alunos/alterar-alunos.component';
 import { NgxMaskModule } from 'ngx-mask';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
+
 
 
 
@@ -64,7 +70,8 @@ import {MatSelectModule} from '@angular/material/select';
     AlterarCursosComponent,
     CadastroAlunoComponent,
     AlunosComponent,
-    AlterarAlunosComponent
+    AlterarAlunosComponent,
+    EndVendaComponent,
   
     
     
@@ -91,6 +98,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatExpansionModule,
     NgxMaskModule.forRoot(),
     MatSelectModule,
+    MatAutocompleteModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

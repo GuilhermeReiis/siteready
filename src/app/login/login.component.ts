@@ -4,6 +4,7 @@ import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import {MatSnackBar} from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private fBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.user = this.fBuilder.group({
       email: ["",[Validators.email,Validators.required] ],
@@ -32,6 +34,8 @@ export class LoginComponent implements OnInit {
     console.log(this.user)
   }
 
+  
+
   signIn() {
     this.isSubmitted=true
     console.log(this.user.controls)
@@ -39,16 +43,20 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem("token", res.token);
+        localStorage.setItem("name", res.user.name);
         this.router.navigate(["/inicio"]);
       },
       (err) => {
+        this._snackBar.open(err.error.message);
         
-        this.teste.message = err.error.message
-        this.teste.error = err.error.error
         console.log(err.error)
-      
       }
+      
     );
+    
+  }
+  closeSnackBar(){
+    this._snackBar.dismiss()
   }
 
   

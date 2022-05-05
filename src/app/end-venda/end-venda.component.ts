@@ -43,12 +43,15 @@ export class EndVendaComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res: any) => {
       this.venda = res.venda;
+      
     });
 
     this.taskServices.getAlunos().subscribe((res) => {
       this.aluno = res.aluno;
       console.log(this.aluno);
     });
+    
+    console.log(this.data.course.valor);
 
     this.listCourse = this.mat_data.course.map((item: any) => item.curso);
 
@@ -62,7 +65,7 @@ export class EndVendaComponent implements OnInit {
     //   curso: this.data.course.name,
     //   vendedor: this.vendedor,
     // };
-    console.log(this.selectedAluno);
+    console.log(this.data.course.valor);
     // console.log(newVenda);
     // this.taskServices.addVenda(newVenda);
   }

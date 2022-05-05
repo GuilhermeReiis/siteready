@@ -5,20 +5,24 @@
 </button>
 <span>SPACE</span>
 <span class="example-spacer"></span>
-<button id="warn" mat-raised-button color="warn">Sair</button>
+   
+    <button (click)="Logout()" id="warn" mat-raised-button color="warn">Sair</button>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav t" mode="side">
       <div class="centraliza">
-        <button (click)="goToVendas()" mat-raised-button>
-          VENDAS
+        <button *ngIf="isAdmin" (click)="goToAlunos()" mat-raised-button>
+          ALUNOS
         </button>
-        <button (click)="goToCursos()" mat-raised-button>
+        <button *ngIf="isAdmin" (click)="goToCursos()" mat-raised-button>
           CURSOS
         </button>
-        <button (click)="goToAlunos()" mat-raised-button>
-          ALUNOS
+        <button *ngIf="isAdmin" (click)="goToCadastroVend()" mat-raised-button>
+          CADASTRO VENDEDOR
+        </button>
+        <button (click)="goToVendas()" mat-raised-button>
+          VENDAS
         </button>
         <button (click)="showFiller = !showFiller" mat-raised-button>
           CONFIGURAÇÕES
@@ -34,5 +38,8 @@
     </ng-container>
     <ng-container *ngIf="showAlunos">
       <app-alunos></app-alunos>
-  </ng-container>
+    </ng-container>
+    <ng-container *ngIf="showCadastroVend">
+      <app-cadastro-vendedor></app-cadastro-vendedor>
+    </ng-container>
 </mat-drawer-container>

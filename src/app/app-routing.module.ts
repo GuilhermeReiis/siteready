@@ -8,6 +8,7 @@ import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.compo
 import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { EndVendaComponent } from './end-venda/end-venda.component';
+import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path:'cadastra_Aluno',
     component: CadastroAlunoComponent
+  },
+  {
+    path:'cadastra-vendedor',
+    component: CadastroVendedorComponent
   },
   {
     path:'Cadastro_Curso',

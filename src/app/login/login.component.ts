@@ -3,6 +3,7 @@ import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -41,10 +42,12 @@ export class LoginComponent implements OnInit {
     console.log(this.user.controls)
     this.authService.signInUser(this.user.value).subscribe(
       (res) => {
-        console.log(res);
+        console.log(res.user);
         localStorage.setItem("token", res.token);
         localStorage.setItem("name", res.user.name);
         this.router.navigate(["/inicio"]);
+        environment.verificacao = (res.user.status)
+
       },
       (err) => {
         this._snackBar.open(err.error.message);

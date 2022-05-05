@@ -1,0 +1,32 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  .button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin: 10px;
+}
+  
+#cadastrar {
+    background-color: #6AEBA0;
+    border-radius: 8px;
+    width: 156px;
+    height: 44px;
+    border: none;
+}
+
+
+

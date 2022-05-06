@@ -55,6 +55,7 @@ export class VendasComponent implements OnInit {
 
   vender() {
     const curso = this.clickedRows;
+    console.log('teste');
     // localStorage.setItem(this.curso)
     this.router.navigate(['endVenda'], {
       queryParams: {
@@ -74,13 +75,13 @@ export class VendasComponent implements OnInit {
       row.enabled = false;
       this.clickedRows.delete(row);
     }
+    console.log(this.clickedRows);
+    // this.test = [];
+    // for (let clickedRow of this.clickedRows) {
+    //   this.test.push(clickedRow);
+    // }
 
-    this.test = [];
-    for (let clickedRow of this.clickedRows) {
-      this.test.push(clickedRow);
-    }
-
-    localStorage.setItem('curso', JSON.stringify(this.test));
+    // localStorage.setItem('curso', JSON.stringify(this.test));
   }
 
   addAluno() {
@@ -99,14 +100,15 @@ export class VendasComponent implements OnInit {
   }
 
   openModalVenda() {
+    const test = this.clickedRows;
+
+    console.log(test);
     const dialogRef = this.dialog.open(EndVendaComponent, {
       data: {
         course: this.test,
       },
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   cadastraAluno(element: any): void {

@@ -9,12 +9,17 @@ import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.componen
 import { VendasComponent } from './vendas/vendas.component';
 import { EndVendaComponent } from './end-venda/end-venda.component';
 import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
+import { CompraComponent } from './compra/compra.component';
 
 
 const routes: Routes = [
   {
     path:'',
     component: HomeComponent
+  },
+  {
+    path:'compra',
+    component: CompraComponent
   },
   {
     path:'cadastra_Aluno',

@@ -42,6 +42,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { CompraComponent } from './compra/compra.component';
 
 
 
@@ -79,6 +80,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     AlterarAlunosComponent,
     EndVendaComponent,
     CadastroVendedorComponent,
+    CompraComponent,
     
   
     

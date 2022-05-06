@@ -21,6 +21,9 @@
         <button *ngIf="isAdmin" (click)="goToCadastroVend()" mat-raised-button>
           CADASTRO VENDEDOR
         </button>
+        <button (click)="goToCompras()" mat-raised-button>
+          COMPRA
+        </button>
         <button (click)="goToVendas()" mat-raised-button>
           VENDAS
         </button>
@@ -41,5 +44,8 @@
     </ng-container>
     <ng-container *ngIf="showCadastroVend">
       <app-cadastro-vendedor></app-cadastro-vendedor>
+    </ng-container>
+    <ng-container *ngIf="showCompra">
+      <app-compra></app-compra>
     </ng-container>
 </mat-drawer-container>

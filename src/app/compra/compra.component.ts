@@ -5,6 +5,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { PeriodicElement } from '../interface/vendasInterface';
 import { TaskService } from '../services/task.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { DDetalhesComponent } from '../d-detalhes/d-detalhes.component';
+
 const ELEMENT_DATA: PeriodicElement[] = [];
 
 @Component({
@@ -13,7 +16,9 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   styleUrls: ['./compra.component.css'],
 })
 export class CompraComponent implements OnInit {
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    public dialog: MatDialog) {}
   ngOnInit(): void {
     this.taskService.getTasks().subscribe((res) => {
       this.dataSource.data = res.cursos;
@@ -31,12 +36,12 @@ export class CompraComponent implements OnInit {
   selection = new Set<PeriodicElement>();
 
   ////////////////////////DIAOLOGS////////////////
-
-
-
-
+  openDialog(element: any) {
+    this.dialog.open(DDetalhesComponent);
+    console.log(element)
+    
+  }
   /////////////////////////BOTOẼS/////////////////////////
-  
 
   ////////////////////////FILTRO////////////////////////
   applyFilter(event: Event) {
@@ -44,7 +49,7 @@ export class CompraComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-// ////////////////////////////////TABLE///////////////////////////////////////
+  // ////////////////////////////////TABLE///////////////////////////////////////
 
   isSelect(row: any) {
     console.log(this.selection.values());

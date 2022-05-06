@@ -43,6 +43,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CompraComponent } from './compra/compra.component';
+import { DDetalhesComponent } from './d-detalhes/d-detalhes.component';
 
 
 
@@ -81,6 +82,7 @@ import { CompraComponent } from './compra/compra.component';
     EndVendaComponent,
     CadastroVendedorComponent,
     CompraComponent,
+    DDetalhesComponent,
     
   
     

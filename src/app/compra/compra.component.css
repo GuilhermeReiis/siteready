@@ -1,3 +1,20 @@
 table {
     width: 100%;
-  }
+}
+
+.ok{
+  display: flex;
+  
+}
+
+button{
+  background-color: #6AEBA0;
+  margin: 10px;
+}
+
+#filtro{
+  height: 40px;
+  border-radius: 8px;
+  background: #C4C4C4;
+  border: none;
+}

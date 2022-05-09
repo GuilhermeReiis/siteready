@@ -51,20 +51,23 @@ export class VendasComponent implements OnInit {
   options!: string[];
   filteredOptions!: Observable<string[]>;
 
-
-
+  subtotal: number = 0;
 
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private taskServices: TaskService,
-    private formBuilder: FormBuilder
+    private taskServices: TaskService // private formBuilder: FormBuilder
   ) {
-    this.form = this.formBuilder.group({
-      paidValue: [0],
-      troco: [0],
-      total:[0]
+    this.form = new FormGroup({
+      paidValue: new FormControl({ value: 0 }),
+      troco: new FormControl({ value: 0, disabled: true }),
     });
+
+    // this.form = this.formBuilder.group({
+    //   paidValue: [0],
+    //   troco: [0],
+    //   total: [0],
+    // });
   }
 
   ngOnInit(): void {
@@ -117,7 +120,6 @@ export class VendasComponent implements OnInit {
     const vendedor = localStorage.getItem('name');
     const aluno = this.myControl.value;
 
-   
     // console.log(aluno);
     // console.log(curso);
     // console.log(vendedor);
@@ -127,38 +129,34 @@ export class VendasComponent implements OnInit {
     if (add) {
       row.enabled = true;
       this.clickedRows.add(row);
-
     } else {
       row.enabled = false;
       this.clickedRows.delete(row);
     }
 
-    const getvalor = Array.from(this.clickedRows).reduce(
-      (acc: number, value: any) => {
-        return acc + value.valor;
-      },
-      0
-    );
+    var selectedsCourses = [...this.clickedRows];
+
+    let valores = selectedsCourses.map((course) => {
+      return course.valor;
+    });
+
+    // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    this.subtotal = valores.reduce((a, b) => a + b);
+    console.log('get: ', this.subtotal);
     this.form.patchValue({
-      total: getvalor,
-      paidValue: getvalor
+      troco: 0,
+      total: this.subtotal,
+      paidValue: this.subtotal,
     });
-    
-    console.log(this.form)
-    this.form.patchValue({  
-      total: getvalor,
-      paidValue: getvalor,
-      troco: this.form.get('paidvalue')!.value - this.form.get('total')!.value,
-    });
-    troco: this.form.get('paidvalue')!.value  - this.form.get('total')!.value,
-    console.log(this.form)
   }
 
-  calculoTroco(total: number, paidValue: number ){
-    let troco = total - paidValue;
-    console.log(troco)
-    return troco;
-    
+  calculoTroco() {
+    let paidValue = this.form.get('paidValue')?.value as number;
+    let troco = paidValue - this.subtotal;
+    this.form.patchValue({
+      troco: troco,
+    });
   }
 
   addAluno() {

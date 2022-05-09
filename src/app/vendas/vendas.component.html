@@ -95,6 +95,9 @@
       Selecionado: {{ clickedRow.curso }}<br />
     </li>
   </ul>
+  <p>
+    subtotal: {{subtotal}}
+  </p>
 </ng-template>
 <footer *ngIf="isStudentExist">
   <mat-form-field [formGroup]="form" appearance="outline" floatLabel="always">
@@ -103,10 +106,8 @@
       matInput
       type="number"
       class="example-right-align"
-      
-      
-      value="valorPago"
-      
+      formControlName="paidValue"
+      (input)="calculoTroco()"
       
     />
     <span matPrefix>$&nbsp;</span>
@@ -121,7 +122,7 @@
       placeholder="0"
       formControlName="troco"
       
-      
+     
     />
     <span matPrefix>$&nbsp;</span>
   </mat-form-field>
@@ -133,6 +134,8 @@
           (click)="vender()"
           mat-raised-button
           class="demo-button ADICIONAR"
+          [disabled]="form.get('troco')!.value < 0"
+
         >
           VENDER
         </button>

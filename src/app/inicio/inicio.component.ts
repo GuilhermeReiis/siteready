@@ -16,7 +16,7 @@ export class InicioComponent implements OnInit {
   showCursos = false;
   showAlunos = false;
   showCadastroVend = false;
-  showCompra = false;
+  
   isAdmin: any = false 
 
   constructor(
@@ -36,7 +36,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = false;
-    this.showCompra = true;
+   
     
   }
 
@@ -45,7 +45,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = false;
-    this.showCompra = false;
+    
     
     
   }
@@ -54,7 +54,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = true;
     this.showAlunos = false;
     this.showCadastroVend = false;
-    this.showCompra = false;
+    
     
   }
   goToAlunos() {
@@ -62,7 +62,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = true;
     this.showCadastroVend = false;
-    this.showCompra = false;
+    
     
   }
   goToCadastroVend() {
@@ -70,7 +70,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = true;
-    this.showCompra = false;
+    
     
   }
 

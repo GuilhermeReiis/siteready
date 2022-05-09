@@ -12,10 +12,6 @@
 }
 
 
-.ok{
-    display: flex;
-    
-}
 
 table{
     width: 100%;
@@ -49,4 +45,13 @@ button{
 
 .demo-row-is-clicked{
     background-color: #6AEBA0;
+}
+footer{
+    display: flex;
+    /* justify-content: end; */
+    background-color: #fff;
+}
+
+mat-toolbar{
+    background-color: #263238;
 }

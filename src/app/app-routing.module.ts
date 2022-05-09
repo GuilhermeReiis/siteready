@@ -7,19 +7,16 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
 import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 import { VendasComponent } from './vendas/vendas.component';
-import { EndVendaComponent } from './end-venda/end-venda.component';
+
+
 import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
-import { CompraComponent } from './compra/compra.component';
+
 
 
 const routes: Routes = [
   {
     path:'',
     component: HomeComponent
-  },
-  {
-    path:'compra',
-    component: CompraComponent
   },
   {
     path:'cadastra_Aluno',
@@ -45,10 +42,7 @@ const routes: Routes = [
     path:'inicio',
     component: InicioComponent
   },
-  {
-    path:'endVenda',
-    component: EndVendaComponent
-  },
+  
   
 ];
 

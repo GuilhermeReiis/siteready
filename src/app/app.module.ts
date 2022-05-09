@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './login/login.component';
-import { EndVendaComponent } from './end-venda/end-venda.component';
 import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
 
 
@@ -42,8 +41,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { CompraComponent } from './compra/compra.component';
-import { DDetalhesComponent } from './d-detalhes/d-detalhes.component';
+
 
 
 
@@ -79,10 +77,8 @@ import { DDetalhesComponent } from './d-detalhes/d-detalhes.component';
     CadastroAlunoComponent,
     AlunosComponent,
     AlterarAlunosComponent,
-    EndVendaComponent,
+   
     CadastroVendedorComponent,
-    CompraComponent,
-    DDetalhesComponent,
     
   
     

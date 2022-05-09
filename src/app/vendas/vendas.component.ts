@@ -6,7 +6,12 @@ import { CadastroAlunoComponent } from '../cadastro-aluno/cadastro-aluno.compone
 import { PeriodicElement } from '../interface/vendasInterface';
 import { LocalStorageService } from '../local-storage.service';
 import { __values } from 'tslib';
-import { EndVendaComponent } from '../end-venda/end-venda.component';
+
+///////////////////////////////////////////////
+
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
 import { MatTableDataSource } from '@angular/material/table';
 
 import {
@@ -22,9 +27,10 @@ import {
   styleUrls: ['./vendas.component.css'],
 })
 export class VendasComponent implements OnInit {
+  form!: FormGroup;
   clickedRows = new Set<any>();
   panelOpenState = false;
-
+  hide = true;
   teste = { message: '', error: false };
   curso = new FormControl();
   isSubmitted = false;
@@ -36,52 +42,123 @@ export class VendasComponent implements OnInit {
   authService: any;
   test: any = [];
 
+  students: any = [];
+
+  isStudentExist = false;
+  ///////filtro alunos///
+  ///////filtro alunos///
+  myControl = new FormControl();
+  options!: string[];
+  filteredOptions!: Observable<string[]>;
+
+
+
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private taskServices: TaskService
-  ) {}
+    private taskServices: TaskService,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      paidValue: [0],
+      troco: [0],
+      total:[0]
+    });
+  }
 
   ngOnInit(): void {
     this.taskServices.getTasks().subscribe((res) => {
       this.dataSource.data = res.cursos;
     });
+    //////////filtro de alunos//////
+
+    this.taskServices.getAlunos().subscribe((res) => {
+      this.students = res.aluno;
+
+      this.options = this.students.map((alu: any) => alu.name);
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map((value) => this._filter(value))
+      );
+      // console.log(test)
+    });
+  }
+  ////////////////fltto de aluno////////////
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
 
+  //////////////////////////
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  checkStudent(event: string) {
+    const index = this.students.findIndex(
+      (student: any) => student.name.toLowerCase() == event.toLocaleLowerCase()
+    );
+
+    if (index === -1) {
+      this.isStudentExist = false;
+    } else {
+      this.isStudentExist = true;
+    }
+    console.log(this.isStudentExist);
+  }
+
   vender() {
     const curso = this.clickedRows;
-    console.log('teste');
-    // localStorage.setItem(this.curso)
-    this.router.navigate(['endVenda'], {
-      queryParams: {
-        //sua venda
-        client: {},
-        courses: this.clickedRows,
-        user_logued: {},
-      },
-    });
+    const vendedor = localStorage.getItem('name');
+    const aluno = this.myControl.value;
+
+   
+    // console.log(aluno);
+    // console.log(curso);
+    // console.log(vendedor);
   }
 
   addAndRemoveClassRow(row: any, add = true) {
     if (add) {
       row.enabled = true;
       this.clickedRows.add(row);
+
     } else {
       row.enabled = false;
       this.clickedRows.delete(row);
     }
-    console.log(this.clickedRows);
-    // this.test = [];
-    // for (let clickedRow of this.clickedRows) {
-    //   this.test.push(clickedRow);
-    // }
 
-    // localStorage.setItem('curso', JSON.stringify(this.test));
+    const getvalor = Array.from(this.clickedRows).reduce(
+      (acc: number, value: any) => {
+        return acc + value.valor;
+      },
+      0
+    );
+    this.form.patchValue({
+      total: getvalor,
+      paidValue: getvalor
+    });
+    
+    console.log(this.form)
+    this.form.patchValue({  
+      total: getvalor,
+      paidValue: getvalor,
+      troco: this.form.get('paidvalue')!.value - this.form.get('total')!.value,
+    });
+    troco: this.form.get('paidvalue')!.value  - this.form.get('total')!.value,
+    console.log(this.form)
+  }
+
+  calculoTroco(total: number, paidValue: number ){
+    let troco = total - paidValue;
+    console.log(troco)
+    return troco;
+    
   }
 
   addAluno() {
@@ -97,18 +174,6 @@ export class VendasComponent implements OnInit {
   openModal() {
     this.router.navigate(['cadastra_Aluno']);
     this.router.navigate([this.cadastraAluno]);
-  }
-
-  openModalVenda() {
-    const test = this.clickedRows;
-
-    console.log(test);
-    const dialogRef = this.dialog.open(EndVendaComponent, {
-      data: {
-        course: this.test,
-      },
-    });
-    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   cadastraAluno(element: any): void {
@@ -142,5 +207,11 @@ export class VendasComponent implements OnInit {
       }
     );
     this.ngOnInit();
+  }
+
+  soma() {
+    let valor = this.curso;
+
+    console.log(valor);
   }
 }

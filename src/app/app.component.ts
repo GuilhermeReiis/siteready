@@ -1,4 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
+import { TaskService } from './services/task.service';
+import { LocalStorageService } from './local-storage.service';
+import { find, observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +13,20 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'space';
+  userId!: string;
+
+  constructor(
+    
+    ){};
+
+  ngOnInit(): void {
+   
+  }
+
+ 
   
   
+    
 }
+
+

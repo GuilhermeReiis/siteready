@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { initialConfig } from 'ngx-mask';
 import { environment } from 'src/environments/environment';
+import { TaskService } from '../services/task.service';
 
 
 @Component({
@@ -16,19 +17,35 @@ export class InicioComponent implements OnInit {
   showCursos = false;
   showAlunos = false;
   showCadastroVend = false;
-  
-  isAdmin: any = false 
-
+  showVendedores =false;
+  isAdmin = false
+  userId!: string;
   constructor(
     private authService: AuthService,
+    private taskServices: TaskService,
     private router: Router,
     ) {}
 
   ngOnInit(): void {
+
+    const { user } = JSON.parse(localStorage.getItem('user')!);
+    this.userId = user.id
     
-    this.isAdmin = environment.verificacao
+    this.teste()
+    
+  
 
   }
+
+  teste() {
+    this.taskServices.searchUserById(this.userId).subscribe(
+      (res) => {
+        this.isAdmin = res.user.status
+        // this.localStorage.set("status", res.status)
+      }
+    );
+  }
+
   
 
   goToCompras() {
@@ -36,6 +53,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = false;
+    this.showVendedores =false;
    
     
   }
@@ -45,6 +63,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = false;
+    this.showVendedores =false;
     
     
     
@@ -54,14 +73,27 @@ export class InicioComponent implements OnInit {
     this.showCursos = true;
     this.showAlunos = false;
     this.showCadastroVend = false;
+    this.showVendedores =false;
     
     
   }
+
+  goToVendedores() {
+    this.showVendas = false;
+    this.showCursos = false;
+    this.showAlunos = false;
+    this.showCadastroVend = false;
+    this.showVendedores =true;
+    
+    
+  }
+
   goToAlunos() {
     this.showVendas = false;
     this.showCursos = false;
     this.showAlunos = true;
     this.showCadastroVend = false;
+    this.showVendedores =false;
     
     
   }
@@ -70,6 +102,7 @@ export class InicioComponent implements OnInit {
     this.showCursos = false;
     this.showAlunos = false;
     this.showCadastroVend = true;
+    this.showVendedores =false;
     
     
   }

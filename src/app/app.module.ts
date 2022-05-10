@@ -41,6 +41,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
+import { VendedoresComponent } from './vendedores/vendedores.component';
+import { AlterarUserComponent } from './alterar-user/alterar-user.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component
     CadastroVendedorComponent,
 
     ConfirmacaoComponent,
+     VendedoresComponent,
+     AlterarUserComponent,
   ],
   imports: [
     BrowserModule,

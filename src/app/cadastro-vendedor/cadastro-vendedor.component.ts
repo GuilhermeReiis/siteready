@@ -32,7 +32,7 @@ export class CadastroVendedorComponent implements OnInit {
       email: ["",[Validators.required] ],
       tell: ["",[Validators.required]],
       password: ["",[Validators.required] ],
-      status: ["",[]]
+      status: false
     });
 
   }

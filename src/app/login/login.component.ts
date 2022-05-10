@@ -4,6 +4,7 @@ import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from '../local-storage.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private fBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private localStorage: LocalStorageService
   ) {
     this.user = this.fBuilder.group({
       email: ["",[Validators.email,Validators.required] ],
@@ -39,15 +41,14 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     this.isSubmitted=true
-    console.log(this.user.controls)
+
     this.authService.signInUser(this.user.value).subscribe(
       (res) => {
-        console.log(res.user);
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("name", res.user.name);
-        this.router.navigate(["/inicio"]);
-        environment.verificacao = (res.user.status)
+        console.log(res)
 
+        this.localStorage.set('user', res)
+        this.router.navigate(["/inicio"]);
+        environment.user = (res)
       },
       (err) => {
         this._snackBar.open(err.error.message);

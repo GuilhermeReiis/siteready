@@ -59,7 +59,14 @@ export class TaskService {
   }
 
   searchUser() {
-    return this.http.get<any>(this.URL + "/user");
+    return this.http.get<any>(this.URL + "/users");
   }
-  
+
+  searchUserById(id?:string) {
+    return this.http.get<any>(`${this.URL}/users/${id}`);
+  }
+
+  deleteUser(id: string) {
+    return this.http.delete(`${this.URL}/users/${id}`);
+  }
 }

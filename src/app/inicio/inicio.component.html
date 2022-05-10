@@ -18,6 +18,9 @@
         <button *ngIf="isAdmin" (click)="goToCursos()" mat-raised-button>
           CURSOS
         </button>
+        <button *ngIf="isAdmin" (click)="goToVendedores()" mat-raised-button>
+          VENDEDORES
+        </button>
         <button *ngIf="isAdmin" (click)="goToCadastroVend()" mat-raised-button>
           CADASTRO VENDEDOR
         </button>
@@ -42,5 +45,8 @@
     </ng-container>
     <ng-container *ngIf="showCadastroVend">
       <app-cadastro-vendedor></app-cadastro-vendedor>
+    </ng-container>
+    <ng-container *ngIf="showVendedores">
+      <app-vendedores></app-vendedores>
     </ng-container>
 </mat-drawer-container>

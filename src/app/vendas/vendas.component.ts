@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CadastroAlunoComponent } from '../cadastro-aluno/cadastro-aluno.component';
 import { PeriodicElement } from '../interface/vendasInterface';
-import { LocalStorageService } from '../local-storage.service';
+
 import { __values } from 'tslib';
 
 ///////////////////////////////////////////////
@@ -14,12 +14,8 @@ import { map, startWith } from 'rxjs/operators';
 
 import { MatTableDataSource } from '@angular/material/table';
 
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
 
 @Component({
   selector: 'app-vendas',
@@ -27,8 +23,9 @@ import {
   styleUrls: ['./vendas.component.css'],
 })
 export class VendasComponent implements OnInit {
+  selectedCourses: PeriodicElement[] = [];
   form!: FormGroup;
-  clickedRows = new Set<any>();
+  clickedRows = new Set<PeriodicElement>();
   panelOpenState = false;
   hide = true;
   teste = { message: '', error: false };
@@ -125,7 +122,8 @@ export class VendasComponent implements OnInit {
     // console.log(vendedor);
   }
 
-  addAndRemoveClassRow(row: any, add = true) {
+  addAndRemoveClassRow(row: PeriodicElement, add = true) {
+    console.log(row);
     if (add) {
       row.enabled = true;
       this.clickedRows.add(row);
@@ -134,15 +132,15 @@ export class VendasComponent implements OnInit {
       this.clickedRows.delete(row);
     }
 
-    var selectedsCourses = [...this.clickedRows];
+    this.selectedCourses = [...this.clickedRows];
 
-    let valores = selectedsCourses.map((course) => {
+    let valores = this.selectedCourses.map((course: any) => {
       return course.valor;
     });
 
     // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    this.subtotal = valores.reduce((a, b) => a + b);
+    this.subtotal = valores.reduce((a: any, b: any) => a + b);
     console.log('get: ', this.subtotal);
     this.form.patchValue({
       troco: 0,
@@ -211,5 +209,16 @@ export class VendasComponent implements OnInit {
     let valor = this.curso;
 
     console.log(valor);
+  }
+
+  openDialog() {
+    this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        nomeAluno: this.myControl.value,
+        troco: this.form.get('troco')?.value,
+        curso: this.selectedCourses,
+        valor: this.form.get('paidValue')?.value,
+      },
+    });
   }
 }

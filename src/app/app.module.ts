@@ -7,61 +7,40 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
 
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule, } from '@angular/material/form-field';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { InicioComponent } from './inicio/inicio.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { CursosComponent } from './cursos/cursos.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AlterarCursosComponent } from './alterar-cursos/alterar-cursos.component';
 import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 import { AlunosComponent } from './alunos/alunos.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { AlterarAlunosComponent } from './alterar-alunos/alterar-alunos.component';
 import { NgxMaskModule } from 'ngx-mask';
-import {MatSelectModule} from '@angular/material/select';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatInputModule} from '@angular/material/input';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
 
 @NgModule({
   declarations: [
@@ -77,15 +56,12 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     CadastroAlunoComponent,
     AlunosComponent,
     AlterarAlunosComponent,
-   
+
     CadastroVendedorComponent,
-    
-  
-    
-    
+
+    ConfirmacaoComponent,
   ],
   imports: [
-    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -113,13 +89,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatInputModule,
     MatRadioModule,
     MatSlideToggleModule,
-    
-    
-    
-    
   ],
   providers: [],
-  bootstrap: [AppComponent]
-  
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

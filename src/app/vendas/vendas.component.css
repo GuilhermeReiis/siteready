@@ -50,8 +50,23 @@ footer{
     display: flex;
     /* justify-content: end; */
     background-color: #fff;
+    
 }
 
 mat-toolbar{
     background-color: #263238;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+    
+}
+.money{
+    display: flex;
+    justify-content: center;
+}
+
+#valorPago{ 
+    margin-right: 20px;
 }

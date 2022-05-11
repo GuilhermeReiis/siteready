@@ -1,9 +1,10 @@
 
 <mat-toolbar>
-<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-  <mat-icon>menu</mat-icon>
-</button>
-<span>SPACE</span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{usuario}}</span>
+  
 <span class="example-spacer"></span>
    
     <button (click)="Logout()" id="warn" mat-raised-button color="warn">Sair</button>

@@ -26,10 +26,10 @@ export class AlterarCursosComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.curso = this.fBuilder.group({
-      curso: ["", ],
-      duracao: ["", ],
-      valor: ["",],
-      descricao: ["", ],
+      curso: [data.curso, ],
+      duracao: [data.duracao, ],
+      valor: [data.valor,],
+      descricao: [data.descricao, ],
     });
    }
 

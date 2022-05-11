@@ -93,5 +93,9 @@ export class AuthService {
   alterarAluno(aluno: IAluno,id: string){
     return this.http.put<any>(this.URL + "/aluno/" +id, aluno);
   }
+  
+  alterarUser(User: IUser,id: string){
+    return this.http.put<any>(this.URL + "/users/" +id, User);
+  }
 
 }

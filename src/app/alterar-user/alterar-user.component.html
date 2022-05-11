@@ -1,78 +1,76 @@
 <h2 mat-dialog-title>Alteração de cadastro do usuario</h2>
-<mat-dialog-content class="mat-typography">
-  
-
+<form [formGroup]="user" (submit)="send()">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Nome Completo</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        (click)="closeSnackBar()"
+        placeholder="Ex. João Silveira Costa"
+      />
+    </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Nome Completo</mat-label>
-        <input
-          formControlName="name"
-          matInput
-          (click)="closeSnackBar()"
-          placeholder="Ex. João Silveira Costa"
-        />
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width " appearance="outline">
-        <mat-label>CPF</mat-label>
-    
-        <input
-          formControlName="cpf"
-          type="number"
-          matInput
-          (click)="closeSnackBar()"
-          placeholder="xxx.xxx.xxx-xx"
-        />
-        <mat-icon matSuffix>mode_edit</mat-icon>
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          type="email"
-          matInput
-          formControlName="email"
-          (click)="closeSnackBar()"
-          placeholder="Ex. pat@example.com"
-        />
-        <mat-error
-          *ngIf="
-            emailFormControl.hasError('email') &&
-            !emailFormControl.hasError('required')
-          "
-        >
-          Por favor Digite um email valido!
-        </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-          Email <strong>nescessario</strong>
-        </mat-error>
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Telephone</mat-label>
-        <span matPrefix>+55 &nbsp;</span>
-        <input
-          formControlName="tell"
-          type="tell"
-          matInput
-          placeholder="(xx)x xxxx-xxxx"
-        />
-        <mat-icon matSuffix>mode_edit</mat-icon>
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Senha</mat-label>
-        <input
-          (click)="closeSnackBar()"
-          formControlName="password"
-          matInput
-          placeholder="Ex. João Silveira Costa"
-        />
-      </mat-form-field>
+      <mat-label>CPF</mat-label>
 
-  
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button id="buton2" mat-button mat-dialog-close>Cancelar</button>
-  <button id="buton1" mat-button [mat-dialog-close]="true" cdkFocusInitial>Cadastrar</button>
-</mat-dialog-actions>
+      <input
+        formControlName="cpf"
+        type="number"
+        matInput
+        (click)="closeSnackBar()"
+      
+      />
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        (click)="closeSnackBar()"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Por favor Digite um email valido!
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email <strong>nescessario</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Telephone</mat-label>
+      <span matPrefix>+55 &nbsp;</span>
+      <input
+        formControlName="tell"
+        type="tell"
+        matInput
+        placeholder="(xx)x xxxx-xxxx"
+      />
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input
+        (click)="closeSnackBar()"
+        formControlName="password"
+        matInput
+        placeholder="Ex. João Silveira Costa"
+      />
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button id="buton2" mat-button mat-dialog-close>Cancelar</button>
+      <button id="buton1">Alterar</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+</form>

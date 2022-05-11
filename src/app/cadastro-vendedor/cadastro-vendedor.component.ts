@@ -3,6 +3,7 @@ import {FormBuilder,FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { VendedoresComponent } from '../vendedores/vendedores.component';
 
 @Component({
   selector: 'app-cadastro-vendedor',
@@ -50,7 +51,7 @@ export class CadastroVendedorComponent implements OnInit {
         (res) => {
           console.log(res);
           localStorage.setItem("token", res.token);
-        this.router.navigate(["/inicio"]);
+          this._snackBar.open("Usuario cadstrado com sucesso!");
       },
       (err) => {
         

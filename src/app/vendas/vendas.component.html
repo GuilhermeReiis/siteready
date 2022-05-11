@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="!isStudentExist" mode="indeterminate"></mat-progress-bar>
 <div class="ok">
   <div class="demo-button-container">
     <div class="centralizar">
@@ -88,19 +89,17 @@
     ></tr>
   </table>
 
-  <div *ngIf="!clickedRows.size">Clicked rows will be logged here</div>
+ 
 
-  <ul>
-    <li *ngFor="let clickedRow of clickedRows">
-      Selecionado: {{ clickedRow.curso }}<br />
-    </li>
-  </ul>
   <p>
     subtotal: {{subtotal}}
   </p>
 </ng-template>
-<footer *ngIf="isStudentExist">
-  <mat-form-field [formGroup]="form" appearance="outline" floatLabel="always">
+
+
+
+<div *ngIf="isStudentExist" class="money">
+  <mat-form-field id="valorPago" [formGroup]="form" appearance="outline" floatLabel="always">
     <mat-label>Valor a Pagar</mat-label>
     <input
       matInput
@@ -108,11 +107,11 @@
       class="example-right-align"
       formControlName="paidValue"
       (input)="calculoTroco()"
-      
+  
     />
     <span matPrefix>$&nbsp;</span>
   </mat-form-field>
-
+  
   <mat-form-field appearance="outline" floatLabel="always" [formGroup]="form">
     <mat-label>Troco</mat-label>
     <input
@@ -121,11 +120,15 @@
       class="example-right-align"
       placeholder="0"
       formControlName="troco"
-      
-     
+  
+  
     />
     <span matPrefix>$&nbsp;</span>
   </mat-form-field>
+</div>
+
+<footer >
+
 
   <mat-toolbar>
     <div class="demo-button-container">
@@ -135,6 +138,7 @@
           mat-raised-button
           class="demo-button ADICIONAR"
           [disabled]="form.get('troco')!.value < 0"
+          
 
         >
           VENDER

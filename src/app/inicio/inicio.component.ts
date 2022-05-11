@@ -20,6 +20,8 @@ export class InicioComponent implements OnInit {
   showVendedores =false;
   isAdmin = false
   userId!: string;
+  usuario!: string
+  
   constructor(
     private authService: AuthService,
     private taskServices: TaskService,
@@ -29,8 +31,8 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
 
     const { user } = JSON.parse(localStorage.getItem('user')!);
-    this.userId = user.id
-    
+    this.userId = user.id;
+    this.usuario = user.name;
     this.teste()
     
   

@@ -1,59 +1,75 @@
+<br />
+<img id="img" src="../../assets/search (2).png" alt="lupa" />
+<input
+  autocomplete="off"
+  matInput
+  (keyup)="applyFilter($event)"
+  placeholder="Vendedor"
+  #input
+  id="filtro"
+/>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <!-- Position Column -->
-    
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let user">{{user.name}}</td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="cpf">
-      <th mat-header-cell *matHeaderCellDef>Cpf</th>
-      <td mat-cell *matCellDef="let user">{{user.cpf}}</td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let user">{{user.email}}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="tell">
-      <th mat-header-cell *matHeaderCellDef>Telefone</th>
-      <td mat-cell *matCellDef="let user">{{user.tell}}</td>
-    </ng-container>
+  <!-- Position Column -->
 
-    <ng-container matColumnDef="adm">
-        <th mat-header-cell *matHeaderCellDef>ADM</th>
-        <td mat-cell *matCellDef="let user">{{user.status}}</td>
-    </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef>Editar</th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-raised-button (click)="openDialog()" class="demo-button ALTERAR">
+  <!-- Weight Column -->
+  <ng-container matColumnDef="cpf">
+    <th mat-header-cell *matHeaderCellDef>Cpf</th>
+    <td mat-cell *matCellDef="let user">{{ user.cpf }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="tell">
+    <th mat-header-cell *matHeaderCellDef>Telefone</th>
+    <td mat-cell *matCellDef="let user">{{ user.tell }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="adm">
+    <th mat-header-cell *matHeaderCellDef>ADM</th>
+    <td mat-cell *matCellDef="let user">{{ user.status }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let user">
+      <button
+        mat-raised-button
+        (click)="alterarUser(user)"
+        class="demo-button ALTERAR"
+      >
         ALTERAR
       </button>
 
-      <button mat-raised-button (click)="deleteUser(element)" class="demo-button REMOVER">
+      <button
+        mat-raised-button
+        (click)="deleteUser(user)"
+        class="demo-button REMOVER"
+      >
         REMOVER
       </button>
     </td>
-    </ng-container>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
-      mat-row
-      (click)="clickedRows.add(row)"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
-      *matRowDef="let row; columns: displayedColumns;"
+    mat-row
+    (click)="clickedRows.add(row)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns"
   ></tr>
-  
-  </table>
+</table>
 
-  <div>
+<div>
   <h3>
     <!-- Click Log -->
   </h3>

@@ -1,12 +1,14 @@
 <h1 mat-dialog-title>Confirmação de venda</h1>
 <div mat-dialog-content>
-  <p>Cursos selecionados: {{listaCurso}}</p>
-  <p>Aluno: {{ data.nomeAluno }}</p>
-  <p>Valor Total: {{ data.valor }}</p>
-  <p>Troco: {{ data.troco }}</p>
-  <br />
-  <div class="button">
-    <button mat-button>Cancelar</button>
-    <button mat-button>Vender</button>
-  </div>
+  <form [formGroup]="venda" (submit)="send()">
+    <p>Cursos selecionados: {{listaCurso}}</p>
+    <p>Aluno: {{ data.nomeAluno }}</p>
+    <p>Valor Total: {{ data.valor }}</p>
+    <p>Troco: {{ data.troco }}</p>
+    <br />
+    <div class="button">
+      <button id="buton2" (click)="cancelar()" mat-button>Cancelar</button>
+      <button id="buton1" mat-button>Vender</button>
+    </div>
+  </form>
 </div>

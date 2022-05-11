@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
 import { AlterarUserComponent } from '../alterar-user/alterar-user.component';
 import { TaskService } from '../services/task.service';
 
@@ -39,8 +40,12 @@ export class VendedoresComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.searchUser().subscribe((res) => {
       this.dataSource.data = res.user;
-      console.log(res)
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   deleteUser(element: any) {
@@ -63,11 +68,23 @@ export class VendedoresComponent implements OnInit {
     );
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AlterarUserComponent);
+  alterarUser(user: any): void{
+    this.clickedRows.clear();
+    this.clickedRows.add(user);
+    
+    const id = this.clickedRows.values().next().value._id;
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    console.log(user)
+
+    const dialogRef = this.dialog.open(AlterarUserComponent, {
+      panelClass: 'teste',
+      data:user
     });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Fechando o dialogo');
+      this.ngOnInit();
+    })
   }
+  
 }

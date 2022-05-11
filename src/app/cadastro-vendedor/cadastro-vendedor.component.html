@@ -1,5 +1,5 @@
 <form class="example-form" [formGroup]="cadastro" (submit)="cadastrar()">
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Nome Completo</mat-label>
     <input
       formControlName="name"
@@ -9,7 +9,7 @@
     />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width " appearance="fill">
+  <mat-form-field class="example-full-width " appearance="outline">
     <mat-label>CPF</mat-label>
 
     <input
@@ -22,7 +22,7 @@
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Email</mat-label>
     <input
       type="email"
@@ -44,7 +44,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Telephone</mat-label>
     <span matPrefix>+55 &nbsp;</span>
     <input
@@ -56,7 +56,7 @@
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="example-full-width" appearance="outline"  >
     <mat-label>Senha</mat-label>
     <input
       (click)="closeSnackBar()"

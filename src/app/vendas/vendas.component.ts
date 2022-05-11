@@ -74,6 +74,7 @@ export class VendasComponent implements OnInit {
     //////////filtro de alunos//////
 
     this.taskServices.getAlunos().subscribe((res) => {
+      console.log(res)
       this.students = res.aluno;
 
       this.options = this.students.map((alu: any) => alu.name);
@@ -212,13 +213,23 @@ export class VendasComponent implements OnInit {
   }
 
   openDialog() {
+    console.log({
+      aluno: this.myControl.value,
+      curso: this.selectedCourses,
+      vendedor: localStorage.getItem('name'),
+      valor: this.form.get('paidValue')?.value,
+      troco: this.form.get('troco')?.value,
+    })
+    return
     this.dialog.open(ConfirmacaoComponent, {
       data: {
-        nomeAluno: this.myControl.value,
-        troco: this.form.get('troco')?.value,
+        aluno: this.myControl.value,
         curso: this.selectedCourses,
+        vendedor: localStorage.getItem('name'),
         valor: this.form.get('paidValue')?.value,
+        troco: this.form.get('troco')?.value,
       },
     });
+    
   }
 }

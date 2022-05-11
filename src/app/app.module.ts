@@ -39,6 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
@@ -93,6 +95,7 @@ import { AlterarUserComponent } from './alterar-user/alterar-user.component';
     MatInputModule,
     MatRadioModule,
     MatSlideToggleModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

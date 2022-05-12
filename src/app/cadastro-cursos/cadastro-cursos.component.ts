@@ -24,6 +24,8 @@ export class CadastroCursosComponent implements OnInit {
       curso: ["",[Validators.required] ],
       duracao: ["",[Validators.required] ],
       valor: ["",[Validators.required] ],
+      area: ["",[Validators.required]],
+      modalidade: ["",[Validators.required]],
       descricao: ["",[Validators.required] ],
     });
   }

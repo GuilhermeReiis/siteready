@@ -1,7 +1,14 @@
 #img{
     margin: 10px;
     
-    
+
+}
+#STRONER{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #filtro{
@@ -57,9 +64,11 @@ mat-toolbar{
     background-color: #263238;
 }
 
-h3{
+.centeralizar1{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
 }
 .money{

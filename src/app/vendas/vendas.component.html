@@ -1,4 +1,7 @@
-<mat-progress-bar *ngIf="!isStudentExist" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar
+  *ngIf="!isStudentExist"
+  mode="indeterminate"
+></mat-progress-bar>
 <div class="ok">
   <div class="demo-button-container">
     <div class="centralizar">
@@ -18,25 +21,29 @@
     <mat-label>Aluno</mat-label>
     <input
       type="text"
-      placeholder="Pick one"
+      placeholder="Selecione um aluno"
       aria-label="Number"
       matInput
-      (ngModelChange)="checkStudent($event)"
       [formControl]="myControl"
       [matAutocomplete]="auto"
     />
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
+        *ngFor="let student of students"
+        [value]="student.name"
+        (click)="checkStudent(student)"
       >
-        {{ option }}
+        {{ student.name }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </form>
 <!-- /////////////////////////////////////////////////// -->
-<h3 *ngIf="!isStudentExist">POR FAVOR ESCOLHA UM ALUNO PARA PROSEGUIR!</h3>
+<div *ngIf="!isStudentExist" class="centeralizar1">
+  <h3>POR FAVOR ESCOLHA UM ALUNO PARA PROSEGUIR!</h3>
+  <img id="STRONER" src="../../assets/astronaut-suit-animate.svg" alt="" />
+</div>
+
 <ng-template [ngIf]="isStudentExist">
   <img
     *ngIf="isStudentExist"
@@ -89,17 +96,16 @@
     ></tr>
   </table>
 
- 
-
-  <p>
-    subtotal: {{subtotal}}
-  </p>
+  <p>subtotal: {{ subtotal }}</p>
 </ng-template>
 
-
-
 <div *ngIf="isStudentExist" class="money">
-  <mat-form-field id="valorPago" [formGroup]="form" appearance="outline" floatLabel="always">
+  <mat-form-field
+    id="valorPago"
+    [formGroup]="form"
+    appearance="outline"
+    floatLabel="always"
+  >
     <mat-label>Valor a Pagar</mat-label>
     <input
       matInput
@@ -107,11 +113,10 @@
       class="example-right-align"
       formControlName="paidValue"
       (input)="calculoTroco()"
-  
     />
     <span matPrefix>$&nbsp;</span>
   </mat-form-field>
-  
+
   <mat-form-field appearance="outline" floatLabel="always" [formGroup]="form">
     <mat-label>Troco</mat-label>
     <input
@@ -120,26 +125,20 @@
       class="example-right-align"
       placeholder="0"
       formControlName="troco"
-  
-  
     />
     <span matPrefix>$&nbsp;</span>
   </mat-form-field>
 </div>
 
-<footer >
-
-
-  <mat-toolbar>
+<footer>
+  <mat-toolbar *ngIf="isStudentExist">
     <div class="demo-button-container">
       <div class="vender">
         <button
           (click)="openDialog()"
           mat-raised-button
           class="demo-button ADICIONAR"
-          [disabled]="form.get('troco')!.value < 0"
-          
-
+          [disabled]="form.get('troco')?.value < 0 || clickedRows.size === 0"
         >
           VENDER
         </button>

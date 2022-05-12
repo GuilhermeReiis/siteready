@@ -1,13 +1,16 @@
-<br />
-<img id="img" src="../../assets/search (2).png" alt="lupa" />
-<input
-  autocomplete="off"
-  matInput
-  (keyup)="applyFilter($event)"
-  placeholder="Vendedor"
-  #input
-  id="filtro"
-/>
+<mat-card>Simple card</mat-card>
+<br>
+<div class="alinhar">
+  <img id="img" src="../../assets/search (2).png" alt="lupa" />
+  <input
+    autocomplete="off"
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Vendedor"
+    #input
+    id="filtro"
+  />
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->
 

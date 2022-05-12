@@ -68,18 +68,16 @@ export class CursosComponent implements OnInit {
     });
   }
 
-  alterarCurso(element: any): void {
+  alterarCurso(curso: any): void {
     this.clickedRows.clear();
-    this.clickedRows.add(element);
+    this.clickedRows.add(curso);
     const id = this.clickedRows.values().next().value._id;
 
     console.log(id)
 
     const dialogRef = this.dialog.open(AlterarCursosComponent, {
       panelClass: 'teste',
-      data:{
-        _id:id
-      }
+      data:curso
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -4,6 +4,11 @@
     
 }
 
+.alinhar{
+    display: flex;
+    justify-content: center;
+}
+
 #filtro{
     height: 40px;
     border-radius: 8px;

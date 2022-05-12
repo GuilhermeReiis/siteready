@@ -13,11 +13,12 @@ import { TaskService } from '../services/task.service';
 })
 export class InicioComponent implements OnInit {
   showFiller = false;
-  showVendas = true;
+  showVendas = false;
   showCursos = false;
   showAlunos = false;
   showCadastroVend = false;
   showVendedores =false;
+  showAllVendas = true;
   isAdmin = false
   userId!: string;
   usuario!: string
@@ -56,6 +57,7 @@ export class InicioComponent implements OnInit {
     this.showAlunos = false;
     this.showCadastroVend = false;
     this.showVendedores =false;
+    this.showAllVendas =false
    
     
   }
@@ -66,7 +68,7 @@ export class InicioComponent implements OnInit {
     this.showAlunos = false;
     this.showCadastroVend = false;
     this.showVendedores =false;
-    
+    this.showAllVendas =false
     
     
   }
@@ -76,7 +78,7 @@ export class InicioComponent implements OnInit {
     this.showAlunos = false;
     this.showCadastroVend = false;
     this.showVendedores =false;
-    
+    this.showAllVendas =false
     
   }
 
@@ -86,7 +88,7 @@ export class InicioComponent implements OnInit {
     this.showAlunos = false;
     this.showCadastroVend = false;
     this.showVendedores =true;
-    
+    this.showAllVendas =false
     
   }
 
@@ -96,7 +98,7 @@ export class InicioComponent implements OnInit {
     this.showAlunos = true;
     this.showCadastroVend = false;
     this.showVendedores =false;
-    
+    this.showAllVendas =false
     
   }
   goToCadastroVend() {
@@ -105,8 +107,15 @@ export class InicioComponent implements OnInit {
     this.showAlunos = false;
     this.showCadastroVend = true;
     this.showVendedores =false;
-    
-    
+    this.showAllVendas =false
+  }
+  gotoAllVendas() {
+    this.showVendas = false;
+    this.showCursos = false;
+    this.showAlunos = false;
+    this.showCadastroVend = false;
+    this.showVendedores =false;
+    this.showAllVendas =true
   }
 
   Logout() {

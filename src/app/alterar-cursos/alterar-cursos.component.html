@@ -1,41 +1,91 @@
-
 <h1 mat-dialog-title>Alterar curso</h1>
 
 <div mat-dialog-actions class>
-  
-    <div class="centralizar">
+  <div class="centralizar">
+    <form [formGroup]="curso" (submit)="test()">
+      <div class="formulario">
+        <div class="on_dados">
+          <mat-form-field appearance="outline">
+            <mat-label>Curso</mat-label>
+            <input
+              formControlName="curso"
+              class="entrada"
+              id="curso"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
+          <!-- <p class="text">CURSO</p>
+                    <input formControlName="curso" class="entrada" id="curso"type="string"> -->
 
-        <form [formGroup]="curso" (submit)="test()">
-             <div class="formulario">
-                <div class="on_dados">
-                    <p class="text">CURSO</p>
-                    <input matInput formControlName="curso" class="entrada" id="curso">
+          <mat-form-field appearance="outline">
+            <mat-label>Duração</mat-label>
+            <input
+              formControlName="duracao"
+              class="entrada"
+              id="duracao"
+              type="number"
+              matInput
+            />
+          </mat-form-field>
+          <!-- <p class="text">DURAÇÃO</p>
+                    <input formControlName="duracao" class="entrada" id="duracao"type="number"> -->
 
-                    <p class="text">DURAÇÃO</p>
-                    <input  formControlName="duracao" class="entrada" id="duracao"type="number">
+          <mat-form-field appearance="outline">
+            <mat-label>Valor</mat-label>
+            <input
+              formControlName="valor"
+              class="entrada"
+              id="valor"
+              type="number"
+              matInput
+            />
+          </mat-form-field>
+          <!-- <p class="text">VALOR</p>
+                    <input formControlName="valor" class="entrada" id="valor" type="number"> -->
 
-                    <p class="text">VALOR</p>
-                    <input formControlName="valor" class="entrada" id="valor" type="number">
+          <mat-form-field appearance="outline">
+            <mat-label>Area</mat-label>
+            <input
+              formControlName="area"
+              class="entrada"
+              id="area"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
 
-                    <p class="text">DESCRIÇÃO</p>
-                    <input formControlName="descricao" class="entrada" id="descricao" type="string">
-                            
-                    
-                </div>
-                <div class="button">
-                    <button id="cadastrar">ALTERAR</button>
-                    <button (click)="cancelar()"id="voltar">VOLTAR</button>
-                </div>
-            </div>
-        </form>       
+          <mat-form-field appearance="fill">
+            <mat-label>Modalidade</mat-label>
+            <mat-select formControlName="modalidade">
+              <mat-option value="MBA">MBA</mat-option>
+              <mat-option value="Graduação">Graduação</mat-option>
+              <mat-option value="Pós-Graduação">Pós-Graduação</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-   
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <textarea
+              formControlName="descricao"
+              class="entrada"
+              id="descricao"
+              type="string"
+              matInput
+            ></textarea>
+          </mat-form-field>
+          <!-- <p class="text">DESCRIÇÃO</p>
+                    <input formControlName="descricao" class="entrada" id="descricao" type="string"> -->
+        </div>
+        <div class="button">
+          <button id="cadastrar">ALTERAR</button>
+          <button (click)="cancelar()" id="voltar">VOLTAR</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-
-</div>
-
 
 <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap");
 </style>

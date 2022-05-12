@@ -1,21 +1,10 @@
 .centralizar{
-    font-family:'inter';
-    /* background-color: #263238; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: -webkit-fill-available;
+    width: 800px;
+    height: 500px;
     
 }
 
 
-.formulario{
-  
-    width: 274px;
-    height: 490px;
-    background: #F8F2F2;
-    border-radius: 12px;
-}
 /* ///////////////////////////////////////FUNDO//////////////////////////////// */
 
 .on_dados {
@@ -37,14 +26,6 @@
 }
   
 
-.entrada {
-
-    height: 40px;
-    border-radius: 8px;
-    background: #C4C4C4;
-    border: none;
-    
-}
 
 /* //////////////////////////ENTRADA DE DADOS////////////////////////////////////////// */
 

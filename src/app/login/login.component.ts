@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         environment.user = (res)
       },
       (err) => {
-        this._snackBar.open(err.error.message);
+        this._snackBar.open(err.error.message, 'Fechar', {duration: 2000});
         
         console.log(err.error)
       }

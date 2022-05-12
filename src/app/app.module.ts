@@ -45,6 +45,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
 import { AlterarUserComponent } from './alterar-user/alterar-user.component';
+import { AllVendasComponent } from './all-vendas/all-vendas.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { AlterarUserComponent } from './alterar-user/alterar-user.component';
     ConfirmacaoComponent,
      VendedoresComponent,
      AlterarUserComponent,
+     AllVendasComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,7 @@ import { AlterarUserComponent } from './alterar-user/alterar-user.component';
     MatRadioModule,
     MatSlideToggleModule,
     MatProgressBarModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,10 +1,10 @@
 
+  
 <mat-toolbar>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>{{usuario}}</span>
-  
+  <span>{{usuario}}</span>  
 <span class="example-spacer"></span>
    
     <button (click)="Logout()" id="warn" mat-raised-button color="warn">Sair</button>
@@ -26,11 +26,11 @@
           CADASTRO VENDEDOR
         </button>
         
-        <button (click)="goToVendas()" mat-raised-button>
+        <button *ngIf="isAdmin" (click)="gotoAllVendas()" mat-raised-button>
           VENDAS
         </button>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-          CONFIGURAÇÕES
+        <button (click)="goToVendas()" mat-raised-button>
+          VENDER
         </button>
       </div>
     </mat-drawer>
@@ -49,5 +49,8 @@
     </ng-container>
     <ng-container *ngIf="showVendedores">
       <app-vendedores></app-vendedores>
+    </ng-container>
+    <ng-container *ngIf="showAllVendas">
+      <app-all-vendas></app-all-vendas>
     </ng-container>
 </mat-drawer-container>

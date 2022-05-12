@@ -7,16 +7,17 @@
   </div>
 </div>
 
-<img id="img" src="../../assets/search (2).png" alt="lupa">
-<input
-  autocomplete="off"
-  matInput
-  (keyup)="applyFilter($event)"
-  placeholder="aluno"
-  #input
-  id="filtro"
-/>
-<br />
+<div class="alinhar">
+  <img id="img" src="../../assets/search (2).png" alt="lupa">
+  <input
+    autocomplete="off"
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="aluno"
+    #input
+    id="filtro"
+  />
+</div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->

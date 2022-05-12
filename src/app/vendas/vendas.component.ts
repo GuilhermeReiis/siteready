@@ -74,7 +74,7 @@ export class VendasComponent implements OnInit {
     //////////filtro de alunos//////
 
     this.taskServices.getAlunos().subscribe((res) => {
-      console.log(res)
+      console.log(res);
       this.students = res.aluno;
 
       this.options = this.students.map((alu: any) => alu.name);
@@ -100,27 +100,27 @@ export class VendasComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  checkStudent(event: string) {
+  checkStudent(student: any) {
+    this.aluno = student;
     const index = this.students.findIndex(
-      (student: any) => student.name.toLowerCase() == event.toLocaleLowerCase()
+      (student: any) =>
+        student.name.toLowerCase() == student.name.toLocaleLowerCase()
     );
-
     if (index === -1) {
       this.isStudentExist = false;
     } else {
       this.isStudentExist = true;
     }
-    console.log(this.isStudentExist);
   }
 
   vender() {
     const curso = this.clickedRows;
-    const vendedor = localStorage.getItem('name');
+    const vendedor = localStorage.getItem('user');
     const aluno = this.myControl.value;
 
-    // console.log(aluno);
-    // console.log(curso);
-    // console.log(vendedor);
+    console.log(aluno);
+    console.log(curso);
+    console.log(vendedor);
   }
 
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
@@ -142,7 +142,7 @@ export class VendasComponent implements OnInit {
     // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     this.subtotal = valores.reduce((a: any, b: any) => a + b);
-    console.log('get: ', this.subtotal);
+    // console.log('get: ', this.subtotal);
     this.form.patchValue({
       troco: 0,
       total: this.subtotal,
@@ -163,9 +163,7 @@ export class VendasComponent implements OnInit {
       panelClass: 'teste',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   openModal() {
@@ -213,23 +211,30 @@ export class VendasComponent implements OnInit {
   }
 
   openDialog() {
-    console.log({
-      aluno: this.myControl.value,
-      curso: this.selectedCourses,
-      vendedor: localStorage.getItem('name'),
-      valor: this.form.get('paidValue')?.value,
-      troco: this.form.get('troco')?.value,
-    })
-    return
-    this.dialog.open(ConfirmacaoComponent, {
-      data: {
-        aluno: this.myControl.value,
-        curso: this.selectedCourses,
-        vendedor: localStorage.getItem('name'),
-        valor: this.form.get('paidValue')?.value,
-        troco: this.form.get('troco')?.value,
-      },
-    });
-    
+    let vendedor = JSON.parse(localStorage.getItem('user')!);
+    // console.log(vendedor.user)
+    // return
+    // console.log({
+    //   aluno: this.aluno,
+    //   curso: this.selectedCourses,
+    //   vendedor: vendedor.user,
+    //   valor: this.form.get('paidValue')?.value,
+    //   troco: this.form.get('troco')?.value,
+    // });
+    // return;
+    this.dialog
+      .open(ConfirmacaoComponent, {
+        data: {
+          aluno: this.aluno,
+          curso: this.selectedCourses,
+          vendedor: vendedor.user,
+          valor: this.form.get('paidValue')?.value,
+          troco: this.form.get('troco')?.value,
+        },
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) console.log('venda finalizada');
+      });
   }
 }

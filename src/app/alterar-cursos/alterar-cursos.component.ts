@@ -23,12 +23,14 @@ export class AlterarCursosComponent implements OnInit {
     private fBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA)public data: any
   ) {
     this.curso = this.fBuilder.group({
       curso: [data.curso, ],
       duracao: [data.duracao, ],
       valor: [data.valor,],
+      area: [data.area],
+      modalidade: [data.modalidade],
       descricao: [data.descricao, ],
     });
    }

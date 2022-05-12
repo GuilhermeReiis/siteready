@@ -36,8 +36,9 @@ mat-drawer{
 
 button{
   background-color: #6AEBA0;
-  margin: 30px;
+  margin: 20px;
 }
+
 
 /* ng-deep mat-drawer{ display: flex !important;
     flex-direction: column !important;}  */

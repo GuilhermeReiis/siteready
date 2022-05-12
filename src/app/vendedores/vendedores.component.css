@@ -1,18 +1,32 @@
 table{
     width: 100%;
     height: auto;
+
 }
+.alinhar{
+    display: flex;
+    justify-content: center;
+
+}
+#img{
+    margin: 10px; 
+}
+
 #filtro{
     height: 40px;
     border-radius: 8px;
     background: #C4C4C4;
     border: none;
+    
 }
 
-.green {
-    color: green;
+.ALTERAR{
+    background-color: #2D706F;
 }
 
-.red{
-    color: red;
+.REMOVER{
+    background-color: #D91B0B;
+}
+button{
+    margin: 10px;
 }

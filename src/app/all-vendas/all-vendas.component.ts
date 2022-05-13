@@ -4,6 +4,7 @@ import { TaskService } from '../services/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AlterarVendaComponent } from '../alterar-venda/alterar-venda.component';
+import { AuthService } from '../services/auth.service';
 export interface PeriodicElement {
   vendedor: string;
   aluno: string;
@@ -23,7 +24,8 @@ export class AllVendasComponent implements OnInit {
   constructor(
     private taskServices: TaskService,
     public dialog: MatDialog,
-    public ngxChartsModule: NgxChartsModule
+    public ngxChartsModule: NgxChartsModule,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -50,11 +52,19 @@ export class AllVendasComponent implements OnInit {
     });                                                                                                                                                                   
   }
   deleteVenda(element: any) {
+
     this.clickedRows.clear();
     this.clickedRows.add(element);
     const id = this.clickedRows.values().next().value._id;
+    element.aluno.curso = []
 
-    console.log(id);
+    this.authService.alterarAluno(element.aluno, element.aluno._id).subscribe(
+      (res)=> {
+        console.log(res)
+      }
+    )
+
+    console.log(element.aluno.curso);
 
     this.taskServices.deleteVenda(id).subscribe(
       (res) => {

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { MatDialogRef } from '@angular/material/dialog';
 import { AlunosComponent } from '../alunos/alunos.component';
 import { TaskService } from '../services/task.service';
+import { emailMask } from 'text-mask-addons';
 
 
 
@@ -21,6 +22,7 @@ export class CadastroAlunoComponent implements OnInit {
   dataSource = TaskService;
   curso = new FormControl();
   cursoList: any = []
+  emailMask = emailMask;
 
   teste = {message:'', error:false}
   constructor(

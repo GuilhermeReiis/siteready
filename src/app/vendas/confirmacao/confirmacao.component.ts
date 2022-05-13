@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PeriodicElement } from 'src/app/interface/vendasInterface';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TaskService } from 'src/app/services/task.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-confirmacao',
@@ -22,6 +23,7 @@ export class ConfirmacaoComponent implements OnInit {
     private fBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ConfirmacaoComponent>,
     private taskService: TaskService,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       aluno: any;
@@ -38,6 +40,12 @@ export class ConfirmacaoComponent implements OnInit {
       troco: [data.troco],
       vendedor: [data.vendedor],
     });
+    // this.alunos = data.aluno.group({
+    //   name: [data.name,],
+    //   age: [data.age, ],
+    //   email: [data.email,],
+    //   tell: [data.tell, ],
+    // });
 
     if (data.curso.length > 1) {
       let cursosString = this.data.curso.map((c) => c.curso);
@@ -48,26 +56,38 @@ export class ConfirmacaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
+    const sad = this.data;
     const teste = localStorage.getItem('user');
   }
 
   send() {
     this.isSubmitted = true;
-    console.log(this.venda.value);
-    this.taskService.addVenda(this.venda.value).subscribe(
-      (res) => {
+    const cursoSelected = this.data.curso.map((res: any) => {
+      return res._id;
+    });
+
+    const arrayCurso = cursoSelected.concat(this.data.aluno.curso);
+    console.log(arrayCurso);
+    this.venda.value.aluno.curso = arrayCurso;
+
+    this.authService
+      .alterarAluno(this.venda.value.aluno, this.venda.value.aluno._id)
+      .subscribe((res) => {
         console.log(res);
-        console.log(this.venda.value);
+      });
+    // this.authService.alterarAluno(cursoSelected, this.data.aluno.curso)
+    console.log(this.venda.value.aluno);
+    this.taskService.addVenda(this.venda.value).subscribe({
+      next: (res) => {
         this.dialogRef.close(true);
       },
-      (err) => {
+      error: (err) => {
         this.teste.message = err.error.message;
         this.teste.error = err.error.error;
         console.log(err.error.value);
         console.log(this.venda.value);
-      }
-    );
+      },
+    });
   }
 
   cancelar(): void {

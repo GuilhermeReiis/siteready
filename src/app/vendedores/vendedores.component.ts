@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { emailMask } from 'text-mask-addons';
 
 import { AlterarUserComponent } from '../alterar-user/alterar-user.component';
 import { TaskService } from '../services/task.service';
@@ -21,7 +22,7 @@ export interface PeriodicElement {
   styleUrls: ['./vendedores.component.css']
 })
 export class VendedoresComponent implements OnInit {
-
+  emailMask = emailMask;
   displayedColumns: string[] = [
     'nome',
     'cpf',

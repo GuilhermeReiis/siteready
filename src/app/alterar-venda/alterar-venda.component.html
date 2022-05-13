@@ -5,16 +5,14 @@
         <mat-label>Aluno</mat-label>
         <input formControlName="aluno" class="entrada" id="curso" matInput />
       </mat-form-field>
-      <!-- <p class="text">CURSO</p>
-                  <input formControlName="curso" class="entrada" id="curso"type="string"> -->
-      <mat-form-field appearance="fill">
+
+      <mat-form-field appearance="outline">
         <mat-label>Toppings</mat-label>
         <mat-select
           [formControl]="toppings"
           class="entrada"
           id="duracao"
           multiple
-          
         >
           <mat-select-trigger>
             {{ toppings.value ? toppings.value[0] : "" }}
@@ -26,14 +24,11 @@
               {{ toppings.value?.length === 2 ? "other" : "others" }})
             </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let topping of toppingList.curso" [value]="topping">{{
+          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
             topping
           }}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <!-- <p class="text">DURAÇÃO</p>
-                  <input formControlName="duracao" class="entrada" id="duracao"type="number"> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Vendedor</mat-label>
@@ -55,9 +50,9 @@
       <!-- <p class="text">DESCRIÇÃO</p>
                   <input formControlName="descricao" class="entrada" id="descricao" type="string"> -->
     </div>
-    <div class="button">
-      <button id="cadastrar">ALTERAR</button>
-      <button (click)="cancelar()" id="voltar">VOLTAR</button>
-    </div>
+    <mat-dialog-actions >
+      <button id="buton2" mat-button mat-dialog-close>Cancelar</button>
+      <button id="buton1" mat-button mat-dialog-close (click)="addAndRemoveCourse(toppings)">Alterar</button>
+    </mat-dialog-actions>
   </div>
 </form>

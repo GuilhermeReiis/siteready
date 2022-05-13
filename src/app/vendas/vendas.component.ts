@@ -42,8 +42,7 @@ export class VendasComponent implements OnInit {
   students: any = [];
 
   isStudentExist = false;
-  ///////filtro alunos///
-  ///////filtro alunos///
+  allCourses = [];
   myControl = new FormControl();
   options!: string[];
   filteredOptions!: Observable<string[]>;
@@ -53,28 +52,22 @@ export class VendasComponent implements OnInit {
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private taskServices: TaskService // private formBuilder: FormBuilder
+    private taskServices: TaskService
   ) {
     this.form = new FormGroup({
       paidValue: new FormControl({ value: 0 }),
       troco: new FormControl({ value: 0, disabled: true }),
     });
-
-    // this.form = this.formBuilder.group({
-    //   paidValue: [0],
-    //   troco: [0],
-    //   total: [0],
-    // });
   }
 
   ngOnInit(): void {
     this.taskServices.getTasks().subscribe((res) => {
-      this.dataSource.data = res.cursos;
+      this.allCourses = res.cursos
+      this.dataSource.data = this.allCourses;
     });
     //////////filtro de alunos//////
 
     this.taskServices.getAlunos().subscribe((res) => {
-      console.log(res);
       this.students = res.aluno;
 
       this.options = this.students.map((alu: any) => alu.name);
@@ -82,7 +75,6 @@ export class VendasComponent implements OnInit {
         startWith(''),
         map((value) => this._filter(value))
       );
-      // console.log(test)
     });
   }
   ////////////////fltto de aluno////////////
@@ -102,6 +94,13 @@ export class VendasComponent implements OnInit {
 
   checkStudent(student: any) {
     this.aluno = student;
+    const filterTable = this.allCourses.filter((course: any) => {
+      return !student.curso.includes(course._id);
+    });
+
+    this.dataSource.data = filterTable;
+
+    
     const index = this.students.findIndex(
       (student: any) =>
         student.name.toLowerCase() == student.name.toLocaleLowerCase()
@@ -117,14 +116,9 @@ export class VendasComponent implements OnInit {
     const curso = this.clickedRows;
     const vendedor = localStorage.getItem('user');
     const aluno = this.myControl.value;
-
-    console.log(aluno);
-    console.log(curso);
-    console.log(vendedor);
   }
 
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
-    console.log(row);
     if (add) {
       row.enabled = true;
       this.clickedRows.add(row);
@@ -142,7 +136,7 @@ export class VendasComponent implements OnInit {
     // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     this.subtotal = valores.reduce((a: any, b: any) => a + b);
-    // console.log('get: ', this.subtotal);
+
     this.form.patchValue({
       troco: 0,
       total: this.subtotal,
@@ -179,9 +173,7 @@ export class VendasComponent implements OnInit {
       panelClass: 'teste',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   send() {

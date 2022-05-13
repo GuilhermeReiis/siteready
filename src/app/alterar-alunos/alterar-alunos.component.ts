@@ -4,6 +4,7 @@ import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { emailMask } from 'text-mask-addons';
 
 
 
@@ -18,7 +19,7 @@ import { Inject } from '@angular/core';
 export class AlterarAlunosComponent implements OnInit {
   alunos: FormGroup;
   isSubmitted = false
-
+  emailMask = emailMask;
   cursos: any = [];
   teste = {message:'', error:false}
   taskServices: any;
@@ -36,6 +37,7 @@ export class AlterarAlunosComponent implements OnInit {
       email: [data.email,],
       tell: [data.tell, ],
     });
+    
   }
 
   

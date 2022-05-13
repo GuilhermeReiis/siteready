@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { emailMask } from 'text-mask-addons';
 
 @Component({
   selector: 'app-alterar-user',
@@ -22,7 +23,8 @@ export class AlterarUserComponent implements OnInit {
   ]);
   user: FormGroup;
   isSubmitted = false;
-  teste = {message:'', error:false}
+  teste = {message:'', error:false};
+  emailMask = emailMask;
   constructor(
     private _snackBar: MatSnackBar,
     private fBuilder: FormBuilder,

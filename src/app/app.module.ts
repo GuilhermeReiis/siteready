@@ -39,8 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
@@ -48,7 +48,6 @@ import { AlterarUserComponent } from './alterar-user/alterar-user.component';
 import { AllVendasComponent } from './all-vendas/all-vendas.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
-
 
 @NgModule({
   declarations: [
@@ -68,11 +67,10 @@ import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
     CadastroVendedorComponent,
 
     ConfirmacaoComponent,
-     VendedoresComponent,
-     AlterarUserComponent,
-     AllVendasComponent,
-     AlterarVendaComponent,
-
+    VendedoresComponent,
+    AlterarUserComponent,
+    AllVendasComponent,
+    AlterarVendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +101,8 @@ import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
     MatRadioModule,
     MatSlideToggleModule,
     MatProgressBarModule,
-    NgxChartsModule
+    NgxChartsModule,
+    TextMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -43,6 +43,7 @@ export class AlunosComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getAlunos().subscribe((res) => {
       this.dataSource.data = res.aluno;
+      console.log(res)
     });
   }
 

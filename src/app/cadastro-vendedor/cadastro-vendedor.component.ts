@@ -4,7 +4,7 @@ import { AuthService } from "../services/auth.service"
 import { Router } from "@angular/router";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { VendedoresComponent } from '../vendedores/vendedores.component';
-
+import { emailMask } from 'text-mask-addons';
 @Component({
   selector: 'app-cadastro-vendedor',
   templateUrl: './cadastro-vendedor.component.html',
@@ -16,7 +16,7 @@ export class CadastroVendedorComponent implements OnInit {
   cadastro: FormGroup;
   isSubmitted = false
   isChecked = false;
-
+  emailMask = emailMask;
   teste = {message:'', error:false}
 
   constructor(
@@ -55,7 +55,7 @@ export class CadastroVendedorComponent implements OnInit {
       },
       (err) => {
         
-        this._snackBar.open(err.error.message);
+        this._snackBar.open(err.error.message, 'Fechar', {duration: 2000});
         console.log(err.error)
         
       }

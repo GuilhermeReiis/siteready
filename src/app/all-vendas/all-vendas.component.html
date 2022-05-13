@@ -55,17 +55,15 @@
     </table>
   </mat-tab>
   <mat-tab label="Relatorio">
-    <ngx-charts-bar-vertical-2d
-      [view]="[700, 300]"
-      [results]="multi"
-      [gradient]="gradient"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [legend]="showLegend"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel"
-    ></ngx-charts-bar-vertical-2d>
+    <mat-card class="example-card">
+      <mat-card-title > TOTAL DE VENDAS </mat-card-title>
+      <mat-card-content>
+        <p *ngFor="let venda of vendas">{{vendas}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
   </mat-tab>
 </mat-tab-group>

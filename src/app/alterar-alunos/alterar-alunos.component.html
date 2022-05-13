@@ -21,34 +21,32 @@
             <input
               formControlName="email"
               class="entrada"
-              id="duracao"
+              [textMask]="{ mask: emailMask }"
               type="string"
               matInput
             />
           </mat-form-field>
 
-
           <mat-form-field appearance="outline">
             <mat-label>Idade</mat-label>
             <input
-            formControlName="age"
-            class="entrada"
-            id="valor"
-            type="number"
+              mask="00"
+              formControlName="age"
+              class="entrada"
+              id="valor"
+              type="string"
               matInput
             />
           </mat-form-field>
-          
-
 
           <mat-form-field appearance="outline">
             <mat-label>Telefone</mat-label>
             <input
-            formControlName="tell"
-            class="entrada"
-            id="descricao"
-            type="number"
-
+              mask="(00) 0 0000-0000"
+              formControlName="tell"
+              class="entrada"
+              id="descricao"
+              type="string"
               matInput
             />
           </mat-form-field>

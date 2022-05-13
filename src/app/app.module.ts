@@ -47,6 +47,8 @@ import { VendedoresComponent } from './vendedores/vendedores.component';
 import { AlterarUserComponent } from './alterar-user/alterar-user.component';
 import { AllVendasComponent } from './all-vendas/all-vendas.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
      VendedoresComponent,
      AlterarUserComponent,
      AllVendasComponent,
+     AlterarVendaComponent,
+
   ],
   imports: [
     BrowserModule,

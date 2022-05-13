@@ -1,0 +1,63 @@
+<form [formGroup]="venda" (submit)="test()">
+  <div class="formulario">
+    <div class="on_dados">
+      <mat-form-field appearance="outline">
+        <mat-label>Aluno</mat-label>
+        <input formControlName="aluno" class="entrada" id="curso" matInput />
+      </mat-form-field>
+      <!-- <p class="text">CURSO</p>
+                  <input formControlName="curso" class="entrada" id="curso"type="string"> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Toppings</mat-label>
+        <mat-select
+          [formControl]="toppings"
+          class="entrada"
+          id="duracao"
+          multiple
+          
+        >
+          <mat-select-trigger>
+            {{ toppings.value ? toppings.value[0] : "" }}
+            <span
+              *ngIf="toppings.value?.length > 1"
+              class="example-additional-selection"
+            >
+              (+{{ toppings.value.length - 1 }}
+              {{ toppings.value?.length === 2 ? "other" : "others" }})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let topping of toppingList.curso" [value]="topping">{{
+            topping
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <p class="text">DURAÇÃO</p>
+                  <input formControlName="duracao" class="entrada" id="duracao"type="number"> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Vendedor</mat-label>
+        <input formControlName="vendedor" class="entrada" id="valor" matInput />
+      </mat-form-field>
+      <!-- <p class="text">VALOR</p>
+                  <input formControlName="valor" class="entrada" id="valor" type="number"> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Valor Pago</mat-label>
+        <input formControlName="valor" class="entrada" id="area" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Troco</mat-label>
+        <input formControlName="troco" class="entrada" id="area" matInput />
+      </mat-form-field>
+
+      <!-- <p class="text">DESCRIÇÃO</p>
+                  <input formControlName="descricao" class="entrada" id="descricao" type="string"> -->
+    </div>
+    <div class="button">
+      <button id="cadastrar">ALTERAR</button>
+      <button (click)="cancelar()" id="voltar">VOLTAR</button>
+    </div>
+  </div>
+</form>

@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TaskService } from '../services/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AlterarVendaComponent } from '../alterar-venda/alterar-venda.component';
 export interface PeriodicElement {
   vendedor: string;
   aluno: string;
@@ -28,21 +29,25 @@ export class AllVendasComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res) => {
       this.dataSource.data = res.venda;
-      console.log(res.venda);
+      // console.log(res.venda);
     });
   }
 
-  alterarVenda(element: any): void {
+  alterarVenda(venda: any): void {
     this.clickedRows.clear();
-    this.clickedRows.add(element);
+    this.clickedRows.add(venda);
     const id = this.clickedRows.values().next().value._id;
+    
+    // console.log(id)
 
-    const dialogRef = this.dialog.open(AllVendasComponent, {
+    const dialogRef = this.dialog.open(AlterarVendaComponent, {
       panelClass: 'teste',
-      data: {
-        _id: id,
-      },
+      data: venda
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });                                                                                                                                                                   
   }
   deleteVenda(element: any) {
     this.clickedRows.clear();

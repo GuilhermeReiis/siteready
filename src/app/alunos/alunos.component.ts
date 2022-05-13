@@ -59,9 +59,7 @@ export class AlunosComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AlterarAlunosComponent, {
       panelClass: 'teste',
-      data:{
-        _id:id
-      }
+      data: element
     });
 
     dialogRef.afterClosed().subscribe((result) => {

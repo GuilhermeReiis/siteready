@@ -27,7 +27,13 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>Editar</th>
         <td mat-cell *matCellDef="let vendas">
-          <button mat-raised-button class="demo-button ALTERAR">ALTERAR</button>
+          <button
+            mat-raised-button
+            class="demo-button ALTERAR"
+            (click)="alterarVenda(vendas)"
+          >
+            ALTERAR
+          </button>
 
           <button
             mat-raised-button

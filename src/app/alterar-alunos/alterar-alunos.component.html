@@ -5,40 +5,53 @@
     <form [formGroup]="alunos" (submit)="test()">
       <div class="formulario">
         <div class="on_dados">
-          <p class="text">NOME</p>
-          <input
-            formControlName="name"
-            class="entrada"
-            id="curso"
-            type="string"
-            
-          />
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input
+              formControlName="name"
+              class="entrada"
+              id="curso"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
 
-          <p class="text">IDADE</p>
-          <input
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              formControlName="email"
+              class="entrada"
+              id="duracao"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Idade</mat-label>
+            <input
             formControlName="age"
             class="entrada"
-            id="duracao"
-            type="number"
-          />
-
-          <p class="text">EMAIL</p>
-          <input
-            formControlName="email"
-            class="entrada"
             id="valor"
-            type="email"
-          />
+            type="number"
+              matInput
+            />
+          </mat-form-field>
+          
 
-          <p class="text">TELEFONE</p>
-          <input
+
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
             formControlName="tell"
             class="entrada"
             id="descricao"
-            type="string"
-            mask="(00) 00000-0000"
-            [showMaskTyped]="true"
-          />
+            type="number"
+
+              matInput
+            />
+          </mat-form-field>
         </div>
         <div class="button">
           <button id="cadastrar">ALTERAR</button>

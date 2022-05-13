@@ -3,39 +3,54 @@
     <form [formGroup]="aluno" (submit)="send()">
       <div class="formulario">
         <div class="on_dados">
-          <p class="text">Nome</p>
-          <input
-            formControlName="name"
-            class="entrada"
-            id="curso"
-            type="string"
-            
-          />
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input
+              formControlName="name"
+              class="entrada"
+              id="curso"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
 
-          <p class="text">EMAIL</p>
-          <input
-            formControlName="email"
-            class="entrada"
-            id="duracao"
-            type="string"
-            
-          />
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              formControlName="email"
+              class="entrada"
+              id="duracao"
+              type="string"
+              matInput
+            />
+          </mat-form-field>
 
-          <p class="text">IDADE</p>
-          <input
+
+          <mat-form-field appearance="outline">
+            <mat-label>Idade</mat-label>
+            <input
             formControlName="age"
             class="entrada"
             id="valor"
             type="number"
-          />
+              matInput
+            />
+          </mat-form-field>
+          
 
-          <p class="text">TELEFONE</p>
-          <input
+
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
             formControlName="tell"
             class="entrada"
             id="descricao"
             type="number"
-          />
+
+              matInput
+            />
+          </mat-form-field>
+         
 
           <!-- <mat-form-field appearance="fill">
             <mat-label>Cursos</mat-label>

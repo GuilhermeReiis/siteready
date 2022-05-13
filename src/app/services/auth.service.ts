@@ -30,6 +30,14 @@ interface IAluno{
   curso:string,
 }
 
+interface IVenda{
+  aluno: object,
+  curso: [{}],
+  vendedor: object,
+  valorPago: number,
+  troco: number
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -96,6 +104,10 @@ export class AuthService {
   
   alterarUser(User: IUser,id: string){
     return this.http.put<any>(this.URL + "/users/" +id, User);
+  }
+
+  alterarVenda(venda: IVenda,id: string){
+    return this.http.put<any>(this.URL+ "/venda/" +id, venda)
   }
 
 }

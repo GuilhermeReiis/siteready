@@ -28,13 +28,13 @@ export class AlterarAlunosComponent implements OnInit {
     private fBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA)public data: any
   ) { 
     this.alunos = this.fBuilder.group({
-      name: ["", ],
-      age: ["", ],
-      email: ["",],
-      tell: ["", ],
+      name: [data.name,],
+      age: [data.age, ],
+      email: [data.email,],
+      tell: [data.tell, ],
     });
   }
 

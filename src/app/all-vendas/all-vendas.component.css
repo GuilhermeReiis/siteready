@@ -14,3 +14,15 @@ button{
 .REMOVER{
     background-color: #D91B0B;
 }
+
+.relatorioDeVendas{
+    display: flex;
+    justify-content: center;
+}
+
+mat-card{
+    background-color: #2D706F;
+    margin: 30px;
+    height: auto;
+    width: 500px;
+}

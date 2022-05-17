@@ -18,9 +18,12 @@ export interface PeriodicElement {
 })
 export class AllVendasComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>();
+  aluno: any;
+  usuario: any;
   clickedRows = new Set<PeriodicElement>();
   vendas: any = [];
   displayedColumns: string[] = ['vendedor', 'aluno', 'idVenda', 'edit'];
+
   constructor(
     private taskServices: TaskService,
     public dialog: MatDialog,
@@ -31,7 +34,17 @@ export class AllVendasComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res) => {
       this.dataSource.data = res.venda;
-      // console.log(res.venda);
+      console.log(res.venda);
+    });
+
+    this.taskServices.getAlunos().subscribe((res) => {
+      this.aluno = res.aluno;
+      console.log(this.aluno);
+    });
+
+    this.taskServices.getAlunos().subscribe((res) => {
+      this.usuario = res.usuario;
+      console.log(res.usuario);
     });
   }
 
@@ -39,32 +52,29 @@ export class AllVendasComponent implements OnInit {
     this.clickedRows.clear();
     this.clickedRows.add(venda);
     const id = this.clickedRows.values().next().value._id;
-    
+
     // console.log(id)
 
     const dialogRef = this.dialog.open(AlterarVendaComponent, {
       panelClass: 'teste',
-      data: venda
+      data: venda,
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.ngOnInit();
-    });                                                                                                                                                                   
+    });
   }
   deleteVenda(element: any) {
-
     this.clickedRows.clear();
     this.clickedRows.add(element);
     const id = this.clickedRows.values().next().value._id;
-    element.aluno.curso = []
+    element.aluno.curso = [];
 
-    this.authService.alterarAluno(element.aluno, element.aluno._id).subscribe(
-      (res)=> {
-        console.log(res)
-      }
-    )
-
-    console.log(element.aluno.curso);
+    this.authService
+      .alterarAluno(element.aluno, element.aluno._id)
+      .subscribe((res) => {
+        console.log(res);
+      });
 
     this.taskServices.deleteVenda(id).subscribe(
       (res) => {

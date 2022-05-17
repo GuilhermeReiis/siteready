@@ -41,6 +41,7 @@ export class VendedoresComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.searchUser().subscribe((res) => {
       this.dataSource.data = res.user;
+      console.log(this.dataSource.data)
     });
   }
 

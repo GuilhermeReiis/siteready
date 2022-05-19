@@ -16,7 +16,7 @@ export class ConfirmacaoComponent implements OnInit {
   // @Input() nameAluno!: string;
   listaCurso: string;
   venda: FormGroup;
-  isSubmitted = false;
+  
   teste = { message: '', error: false };
 
   constructor(
@@ -58,10 +58,11 @@ export class ConfirmacaoComponent implements OnInit {
   ngOnInit(): void {
     const sad = this.data;
     const teste = localStorage.getItem('user');
+    console.log(sad)
   }
 
   send() {
-    this.isSubmitted = true;
+    
     const cursoSelected = this.data.curso.map((res: any) => {
       return res._id;
     });
@@ -70,16 +71,16 @@ export class ConfirmacaoComponent implements OnInit {
     console.log(arrayCurso);
     this.venda.value.aluno.curso = arrayCurso;
 
-    this.authService
-      .alterarAluno(this.venda.value.aluno, this.venda.value.aluno._id)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    // this.authService
+    //   .alterarAluno(this.venda.value.aluno, this.venda.value.aluno._id)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //   });
     // this.authService.alterarAluno(cursoSelected, this.data.aluno.curso)
     console.log(this.venda.value.aluno);
     this.taskService.addVenda(this.venda.value).subscribe({
       next: (res) => {
-        this.dialogRef.close(true);
+        this.dialogRef.close({data: 'send'});
       },
       error: (err) => {
         this.teste.message = err.error.message;
@@ -91,7 +92,9 @@ export class ConfirmacaoComponent implements OnInit {
   }
 
   cancelar(): void {
-    this.dialogRef.close();
+    console.log('o')
+    this.dialogRef.close({data: 'closed'});
+    
     let carro = 'gol';
   }
 }

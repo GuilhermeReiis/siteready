@@ -62,7 +62,7 @@ export class VendasComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskServices.getTasks().subscribe((res) => {
-      this.allCourses = res.cursos
+      this.allCourses = res.cursos;
       this.dataSource.data = this.allCourses;
     });
     //////////filtro de alunos//////
@@ -100,7 +100,6 @@ export class VendasComponent implements OnInit {
 
     this.dataSource.data = filterTable;
 
-    
     const index = this.students.findIndex(
       (student: any) =>
         student.name.toLowerCase() == student.name.toLocaleLowerCase()
@@ -177,6 +176,7 @@ export class VendasComponent implements OnInit {
   }
 
   send() {
+    console.log('closed');
     this.isSubmitted = true;
 
     const curso = this.aluno.value.curso.value.map((item: any) => item.curso);
@@ -226,6 +226,8 @@ export class VendasComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((res) => {
+        console.log(res);
+        console.log(res?.data);
         if (res) console.log('venda finalizada');
       });
   }

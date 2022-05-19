@@ -7,26 +7,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Toppings</mat-label>
-        <mat-select
-          [formControl]="toppings"
-          class="entrada"
-          id="duracao"
-          multiple
-        >
-          <mat-select-trigger>
-            {{ toppings.value ? toppings.value[0] : "" }}
-            <span
-              *ngIf="toppings.value?.length > 1"
-              class="example-additional-selection"
-            >
-              (+{{ toppings.value.length - 1 }}
-              {{ toppings.value?.length === 2 ? "other" : "others" }})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
-            topping
-          }}</mat-option>
+        <mat-label>curso</mat-label>
+        <mat-select formControlName="curso" multiple="true">
+        <mat-option type="checkbox" *ngFor="let item of toppingList" value="venda.curso"></mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -50,9 +33,11 @@
       <!-- <p class="text">DESCRIÇÃO</p>
                   <input formControlName="descricao" class="entrada" id="descricao" type="string"> -->
     </div>
-    <mat-dialog-actions >
+    <mat-dialog-actions>
       <button id="buton2" mat-button mat-dialog-close>Cancelar</button>
-      <button id="buton1" mat-button mat-dialog-close (click)="addAndRemoveCourse(toppings)">Alterar</button>
+      <button id="buton1" mat-button mat-dialog-close (click)="test()">
+        Alterar
+      </button>
     </mat-dialog-actions>
   </div>
 </form>

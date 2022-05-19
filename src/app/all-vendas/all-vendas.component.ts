@@ -34,21 +34,21 @@ export class AllVendasComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res) => {
       this.dataSource.data = res.venda;
-      console.log(res.venda);
+      // console.log(res.venda);
     });
 
     this.taskServices.getAlunos().subscribe((res) => {
       this.aluno = res.aluno;
-      console.log(this.aluno);
+      // console.log(this.aluno);
     });
 
     this.taskServices.getAlunos().subscribe((res) => {
       this.usuario = res.usuario;
-      console.log(res.usuario);
+      // console.log(res.usuario);
     });
   }
 
-  alterarVenda(venda: any): void {
+  openAlterarVenda(venda: any): void {
     this.clickedRows.clear();
     this.clickedRows.add(venda);
     const id = this.clickedRows.values().next().value._id;
@@ -60,9 +60,9 @@ export class AllVendasComponent implements OnInit {
       data: venda,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.ngOnInit();
     });
+    
   }
   deleteVenda(element: any) {
     this.clickedRows.clear();
@@ -86,65 +86,5 @@ export class AllVendasComponent implements OnInit {
         console.log(err.error);
       }
     );
-  } ////
-
-  multi = [
-    {
-      name: 'Germany',
-      series: [
-        {
-          name: '2010',
-          value: 7300000,
-        },
-        {
-          name: '2011',
-          value: 8940000,
-        },
-      ],
-    },
-
-    {
-      name: 'USA',
-      series: [
-        {
-          name: '2010',
-          value: 7870000,
-        },
-        {
-          name: '2011',
-          value: 8270000,
-        },
-      ],
-    },
-
-    {
-      name: 'France',
-      series: [
-        {
-          name: '2010',
-          value: 5000002,
-        },
-        {
-          name: '2011',
-          value: 5800000,
-        },
-      ],
-    },
-  ];
-
-  // options
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  gradient: boolean = false;
-  showLegend: boolean = true;
-  legendPosition: string = 'below';
-  showXAxisLabel: boolean = true;
-  yAxisLabel: string = 'Country';
-  showYAxisLabel: boolean = true;
-  xAxisLabel = 'Population';
-
-  colorScheme = {
-    domain: ['#5AA454', '#C7B42C', '#AAAAAA'],
-  };
-  schemeType: string = 'linear';
+  } 
 }

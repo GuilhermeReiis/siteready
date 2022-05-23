@@ -23,6 +23,10 @@ export class AlterarVendaComponent implements OnInit {
   venda: any;
   teste = { message: '', error: false };
 
+
+
+  
+
   toppingList!: [];
   listaCurso: any;
   listCursos: any;
@@ -38,30 +42,34 @@ export class AlterarVendaComponent implements OnInit {
   ) {
     this.venda = this.fBuilder.group({
       aluno: [data.aluno.name],
-      curso: [data.curso],
+      curso: [''],
       vendedor: [data.vendedor.name],
       valor: [data._v],
       troco: [data.troco],
     });
-    
   }
 
   ngOnInit(): void {
     this.taskService.getTasks().subscribe((res) => {
       this.toppingList = res.cursos.map((res: any) => {
-        console.log('res')
-        console.log(res)
+        return res.cursos;
       });
       const b = this.data.curso.map((res: any) => {
-        console.log('res b')
-        console.log(res)
+        console.log('res b');
+        console.log(res);
       });
-      const listaDeCursos = [].concat(this.toppingList, b);
+
       // console.log(b)
       // console.log(this.toppingList)
       // console.log(listaDeCursos)
-
     });
+  }
+
+  
+
+  buildCurso() {
+    const values = this.toppingList.map(v => new FormControl(false));
+    return this.fBuilder.array(values)
   }
 
   test() {

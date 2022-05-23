@@ -39,6 +39,7 @@ export class VendasComponent implements OnInit {
   authService: any;
   test: any = [];
 
+ 
   students: any = [];
 
   isStudentExist = false;
@@ -48,6 +49,7 @@ export class VendasComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
 
   subtotal: number = 0;
+  
 
   constructor(
     private router: Router,
@@ -60,6 +62,8 @@ export class VendasComponent implements OnInit {
     });
   }
 
+
+  
   ngOnInit(): void {
     this.taskServices.getTasks().subscribe((res) => {
       this.allCourses = res.cursos;

@@ -41,7 +41,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TextMaskModule } from 'angular2-text-mask';
-
 import { ConfirmacaoComponent } from './vendas/confirmacao/confirmacao.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
 import { AlterarUserComponent } from './alterar-user/alterar-user.component';
@@ -63,9 +62,7 @@ import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
     CadastroAlunoComponent,
     AlunosComponent,
     AlterarAlunosComponent,
-
     CadastroVendedorComponent,
-
     ConfirmacaoComponent,
     VendedoresComponent,
     AlterarUserComponent,

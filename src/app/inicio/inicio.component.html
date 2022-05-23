@@ -1,5 +1,4 @@
 
-  
 <mat-toolbar>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
@@ -13,44 +12,37 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav t" mode="side">
       <div class="centraliza">
-        <button *ngIf="isAdmin" (click)="goToAlunos()" mat-raised-button>
+        <button *ngIf="isAdmin" routerLink="/alunos" mat-raised-button>
           ALUNOS
         </button>
-        <button *ngIf="isAdmin" (click)="goToCursos()" mat-raised-button>
+        <button *ngIf="isAdmin" routerLink="/cursos" mat-raised-button>
           CURSOS
         </button>
-        <button *ngIf="isAdmin" (click)="goToVendedores()" mat-raised-button>
+        <button *ngIf="isAdmin" routerLink="/vendedores" mat-raised-button>
           VENDEDORES
         </button>
-        <button *ngIf="isAdmin" (click)="goToCadastroVend()" mat-raised-button>
+        <button *ngIf="isAdmin" routerLink="/cadastra-vendedor" mat-raised-button>
           CADASTRO VENDEDOR
         </button>
         
-        <button *ngIf="isAdmin" (click)="gotoAllVendas()" mat-raised-button>
+        <button *ngIf="isAdmin" routerLink="/vendas" mat-raised-button>
           VENDAS
         </button>
-        <button (click)="goToVendas()" mat-raised-button>
+        <button routerLink="/vender" mat-raised-button>
           VENDER
         </button>
       </div>
     </mat-drawer>
-    
-    <ng-container *ngIf="showVendas">
-        <app-vendas></app-vendas>
-    </ng-container>
-    <ng-container *ngIf="showCursos">
-        <app-cursos></app-cursos>
-    </ng-container>
-    <ng-container *ngIf="showAlunos">
-      <app-alunos></app-alunos>
-    </ng-container>
-    <ng-container *ngIf="showCadastroVend">
-      <app-cadastro-vendedor></app-cadastro-vendedor>
-    </ng-container>
-    <ng-container *ngIf="showVendedores">
-      <app-vendedores></app-vendedores>
-    </ng-container>
-    <ng-container *ngIf="showAllVendas">
-      <app-all-vendas></app-all-vendas>
-    </ng-container>
 </mat-drawer-container>
+<ng-container>
+  
+</ng-container>
+
+
+
+
+
+
+
+
+

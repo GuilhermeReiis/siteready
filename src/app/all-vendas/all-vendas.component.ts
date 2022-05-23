@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AlterarVendaComponent } from '../alterar-venda/alterar-venda.component';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 export interface PeriodicElement {
   vendedor: string;
   aluno: string;
@@ -24,7 +25,17 @@ export class AllVendasComponent implements OnInit {
   vendas: any = [];
   displayedColumns: string[] = ['vendedor', 'aluno', 'idVenda', 'edit'];
 
+  showFiller = false;
+  showVendas = false;
+  showCursos = false;
+  showAlunos = false;
+  showCadastroVend = false;
+  showVendedores =false;
+  showAllVendas = true;
+
+
   constructor(
+    private router: Router, 
     private taskServices: TaskService,
     public dialog: MatDialog,
     public ngxChartsModule: NgxChartsModule,
@@ -47,6 +58,11 @@ export class AllVendasComponent implements OnInit {
       // console.log(res.usuario);
     });
   }
+
+  gotoAllVendas() {
+    this.router.navigateByUrl('/vendas')
+  }
+
 
   openAlterarVenda(venda: any): void {
     this.clickedRows.clear();

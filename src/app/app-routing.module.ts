@@ -4,50 +4,65 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
-import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 import { VendasComponent } from './vendas/vendas.component';
-
-
 import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
-
-
+import { AlunosComponent } from './alunos/alunos.component';
+import { CursosComponent } from './cursos/cursos.component';
+import { VendedoresComponent } from './vendedores/vendedores.component';
+import { AllVendasComponent } from './all-vendas/all-vendas.component';
 
 const routes: Routes = [
+  ///////DEFOULT/////
   {
-    path:'',
-    component: HomeComponent
+    path: '',
+    component: HomeComponent,
+  },
+
+  ////CADASTROS DE LOGIN///////
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'cadastra_Aluno',
-    component: CadastroAlunoComponent
+    path: 'cadastro',
+    component: CadastroComponent,
+  },
+
+  ////////MODULO DE INICIO/////
+  {
+    path: 'inicio',
+    component: InicioComponent,
+  },
+
+  ////////BOTÔES/////////
+  {
+    path: 'alunos',
+    component: AlunosComponent,
   },
   {
-    path:'cadastra-vendedor',
-    component: CadastroVendedorComponent
+    path: 'cursos',
+    component: CursosComponent,
   },
   {
-    path:'Cadastro_Curso',
-    component: CadastroCursosComponent
+    path: 'vendedores',
+    component: VendedoresComponent,
   },
   {
-    path:'login',
-    component: LoginComponent
+    path: 'cadastra-vendedor',
+    component: CadastroVendedorComponent,
   },
   {
-    path:'cadastro',
-    component: CadastroComponent
+    path: 'vendas',
+    component: AllVendasComponent,
   },
   {
-    path:'inicio',
-    component: InicioComponent
+    path: 'vender',
+    component: VendasComponent,
   },
-  
-  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

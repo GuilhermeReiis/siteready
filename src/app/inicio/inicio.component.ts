@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
+import { LocalStorageService } from '../local-storage.service';
 
 
 @Component({
@@ -12,10 +13,12 @@ export class InicioComponent implements OnInit {
   isAdmin = false;
   userId!: string;
   usuario!: string;
+  
 
   constructor(
     private taskServices: TaskService,
-    private router: Router
+    private router: Router,
+    private localStorage: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class InicioComponent implements OnInit {
     this.userId = user.id;
     this.usuario = user.name;
     this.searchUserById();
+    
   }
 
   searchUserById() {
@@ -35,4 +39,6 @@ export class InicioComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+ 
 }

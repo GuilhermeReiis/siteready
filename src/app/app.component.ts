@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,8 +12,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class AppComponent {
   title = 'space';
   userId!: string;
+  isAdmin = false;
+  usuario!: string;
 
-  constructor() {}
+  constructor(
+  ) {
+    
+  }
 
   ngOnInit(): void {}
 }

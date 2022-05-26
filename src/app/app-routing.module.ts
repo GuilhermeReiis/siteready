@@ -21,7 +21,7 @@ const routes: Routes = [
   ////CADASTROS DE LOGIN///////
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'cadastro',

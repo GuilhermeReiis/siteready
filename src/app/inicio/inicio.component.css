@@ -1,9 +1,4 @@
-.example-container {
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    
-}
+
   
   .example-sidenav-content {
     display: flex;
@@ -18,15 +13,9 @@
    
 }
 
-mat-toolbar{
+mat-nav-list{
   background-color: #263238;
-  color: aliceblue;
-  
-}
-
-mat-drawer{
-  background-color: #263238;
-  color: aliceblue;
+  padding: 20px;
 }
 
 .centraliza{
@@ -34,9 +23,30 @@ mat-drawer{
   flex-direction: column;
 }
 
-button{
+.mat-list-item{
   background-color: #6AEBA0;
-  margin: 20px;
+  margin: 8px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  
+  
+ 
+}
+span{
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.logout{
+  background-color: #D91B0B;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.img2{
+  width: auto;
+  height: 50%;
+  margin: 10px;
 }
 
 

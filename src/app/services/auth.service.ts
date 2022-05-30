@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { EmailValidator } from "@angular/forms";
+
 
 interface IUser{
 email:string,
@@ -42,6 +43,7 @@ interface IVenda{
   providedIn: "root",
 })
 export class AuthService {
+  
   private URL = "http://localhost:8080";
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -62,12 +64,13 @@ export class AuthService {
   }
 
   loggedIn() {
+    // this.mostrarMenuEmitter.emit(true);
     return !!localStorage.getItem("token");
   }
 
   logout() {
     localStorage.removeItem("token");
-    this.router.navigate(["/tasks"]);
+    this.router.navigate(["/"]);
   }
 
   getToken() {

@@ -47,6 +47,9 @@ import { AlterarUserComponent } from './alterar-user/alterar-user.component';
 import { AllVendasComponent } from './all-vendas/all-vendas.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
+import { HeaderComponent } from './header/header.component';
+import { MatDividerModule} from '@angular/material/divider'
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,7 @@ import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
     AlterarUserComponent,
     AllVendasComponent,
     AlterarVendaComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,10 @@ import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
     MatProgressBarModule,
     NgxChartsModule,
     TextMaskModule,
+    MatDividerModule,
+    MatListModule
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

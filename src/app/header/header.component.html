@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <button mat-icon-button class="img"><mat-icon>menu</mat-icon></button>
+  <button mat-raised-button>
+    {{ !this.authService.loggedIn() ? "login" : "logout" }}
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <button mat-icon-button><mat-icon>student</mat-icon>Aluno</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

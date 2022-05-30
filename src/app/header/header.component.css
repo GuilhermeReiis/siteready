@@ -1,0 +1,12 @@
+mat-toolbar{
+    background-color: #263238;
+    /* width: 100%; */
+    
+}
+
+.img{
+    background-color: #6AEBA0;
+}
+mat-sidenav{
+    width: 100px;
+}

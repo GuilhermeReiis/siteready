@@ -1,46 +1,19 @@
-
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
+<mat-nav-list *ngIf="!this.authService.loggedIn()">
+  <button (click)="this.authService.logout()" mat-button class="logout">LOGOUT</button>
+  <img src="../../assets/astronaut-helmet-animate.svg" alt="" />
+  <span>Bem Vindo {{ usuario | uppercase }}</span>
+  <button mat-list-item routerLink="/alunos">
+    <img class="img2" src="../../assets/users.svg" alt="" />
+    Alunos
   </button>
-  <span>{{usuario}}</span>  
-<span class="example-spacer"></span>
-   
-    <button (click)="Logout()" id="warn" mat-raised-button color="warn">Sair</button>
-</mat-toolbar>
-
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav t" mode="side">
-      <div class="centraliza">
-        <button *ngIf="isAdmin" routerLink="/alunos" mat-raised-button>
-          ALUNOS
-        </button>
-        <button *ngIf="isAdmin" routerLink="/cursos" mat-raised-button>
-          CURSOS
-        </button>
-        <button *ngIf="isAdmin" routerLink="/vendedores" mat-raised-button>
-          VENDEDORES
-        </button>
-        <button *ngIf="isAdmin" routerLink="/cadastra-vendedor" mat-raised-button>
-          CADASTRO VENDEDOR
-        </button>
-        
-        <button *ngIf="isAdmin" routerLink="/vendas" mat-raised-button>
-          VENDAS
-        </button>
-        <button routerLink="/vender" mat-raised-button>
-          VENDER
-        </button>
-      </div>
-    </mat-drawer>
-    
-</mat-drawer-container>
-
-
-
-
-
-
-
-
-
+  <button mat-list-item routerLink="/cursos">
+    <img class="img2" src="../../assets/graduation-cap.svg" alt="" />
+    Cursos
+  </button>
+  <button mat-list-item routerLink="/vendedores">
+    <img class="img2" src="../../assets/user.svg" alt="">
+    Vendedores</button>
+  <button mat-list-item routerLink="/vender">
+    <img class="img2" src="../../assets/shopping-cart.svg" alt="">
+    Compras</button>
+</mat-nav-list>

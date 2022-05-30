@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -33,22 +29,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   signIn() {
     this.isSubmitted = true;
 
-    this.authService.signInUser(this.user.value).subscribe(
-      (res) => {
+    this.authService.signInUser(this.user.value).subscribe({
+      next: (res) => {
         this.localStorage.set('user', res);
         this.router.navigate(['/inicio']);
         environment.user = res;
       },
-      (err) => {
+      error: (err) => {
+        this.router.navigate(['/login'])
         this._snackBar.open(err.error.message, 'Fechar', { duration: 2000 });
-      }
-    );
+      },
+    });
   }
   closeSnackBar() {
     this._snackBar.dismiss();

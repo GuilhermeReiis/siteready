@@ -1,0 +1,9 @@
+mat-drawer-container{
+    height: 100%;
+}
+
+mat-drawer{
+    width: 25%;
+    height: auto;
+}
+

@@ -1,14 +1,53 @@
 <mat-toolbar>
-  <button mat-icon-button class="img"><mat-icon>menu</mat-icon></button>
-  <button mat-raised-button>
+  <button
+    *ngIf="this.authService.loggedIn()"
+    mat-icon-button
+    class="img"
+    (click)="drawer.toggle()"
+    
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button
+    mat-raised-button
+    [style.background-color]="this.authService.loggedIn() ? '#D91B0B' : '#6AEBA0'"
+    (click)="this.authService.loggedIn() ? this.authService.logout() : login()"
+  >
     {{ !this.authService.loggedIn() ? "login" : "logout" }}
   </button>
 </mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened>
-    <button mat-icon-button><mat-icon>student</mat-icon>Aluno</button>
-  </mat-sidenav>
-  <mat-sidenav-content>
+<mat-drawer-container class="example-container">
+  <mat-drawer id="scroll" mode="over" closed #drawer>
+    <mat-list role="list">
+      <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
+      <img src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
+        <mat-list-item>
+          <button mat-list-item routerLink="/alunos">
+            <mat-icon>supervisor_account</mat-icon>ALUNOS
+          </button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-list-item routerLink="/cursos">
+            <mat-icon>school</mat-icon>CURSOS
+          </button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-list-item routerLink="/vendedores">
+            <mat-icon>perm_identity</mat-icon>VENDEDORES
+          </button>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-list-item routerLink="/vender">
+            <mat-icon>credit_card</mat-icon>COMPRA
+          </button>
+        </mat-list-item>
+
+      </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>

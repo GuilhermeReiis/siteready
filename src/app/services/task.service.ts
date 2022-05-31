@@ -8,22 +8,36 @@ export class TaskService {
   private URL = "http://localhost:8080";
   static filter: string;
   constructor(private http: HttpClient) {}
-
+  
   getTasks() {
     return this.http.get<any>(this.URL + "/cursos");
   }
-
+  
+  
+  // ALUNOS /////////////////////////////////////
   getAlunos() {
     return this.http.get<any>(this.URL + "/aluno");
   }
-
+  deleteAlunos(id: string) {
+    return this.http.delete(`${this.URL}/aluno/${id}`);
+  }
+  
+  
+  // VENDAS/////////////////////////////////////
   getVendas() {
     return this.http.get<any>(this.URL + "/venda");
   }
-
   addVenda(venda: any){
     return this.http.post<any>(this.URL + "/venda", venda);
   }
+  deleteVenda(id: string) {
+    return this.http.delete(`${this.URL}/venda/${id}`)
+  }
+  
+  
+
+
+
 
   getPrivateProject() {
     return this.http.get<any>(this.URL + "/");
@@ -50,9 +64,6 @@ export class TaskService {
     return this.http.delete(`${this.URL}/curso/${id}`);
   }
 
-  deleteAlunos(id: string) {
-    return this.http.delete(`${this.URL}/aluno/${id}`);
-  }
 
   alterarProject(id: string) {
     return this.http.delete(`${this.URL}/alterar/${id}`);
@@ -68,8 +79,5 @@ export class TaskService {
 
   deleteUser(id: string) {
     return this.http.delete(`${this.URL}/users/${id}`);
-  }
-  deleteVenda(id: string) {
-    return this.http.delete(`${this.URL}/venda/${id}`)
   }
 }

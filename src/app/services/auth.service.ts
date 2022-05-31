@@ -65,11 +65,11 @@ export class AuthService {
 
   loggedIn() {
     // this.mostrarMenuEmitter.emit(true);
-    return !!localStorage.getItem("token");
+    return !!localStorage.getItem("user");
   }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.router.navigate(["/"]);
   }
 

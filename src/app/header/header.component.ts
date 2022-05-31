@@ -23,10 +23,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // const { user } = JSON.parse(localStorage.getItem('user')!);
-    // this.userId = user.id;
-    // this.usuario = user.name;
-    // this.searchUserById();
+    const { user } = JSON.parse(localStorage.getItem('user')!);
+    this.userId = user.id;
+    this.usuario = user.name;
+    this.searchUserById();
   }
 
   Logout() {
@@ -38,5 +38,9 @@ export class HeaderComponent implements OnInit {
       this.isAdmin = res.user.status;
     });
   }
+  login(){
+    this.router.navigate(['/login']);
+  }
+  
 
 }

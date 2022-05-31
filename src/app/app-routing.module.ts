@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './views/home/home.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { VendasComponent } from './vendas/vendas.component';
-import { CadastroVendedorComponent } from './cadastro-vendedor/cadastro-vendedor.component';
-import { AlunosComponent } from './alunos/alunos.component';
-import { CursosComponent } from './cursos/cursos.component';
-import { VendedoresComponent } from './vendedores/vendedores.component';
-import { AllVendasComponent } from './all-vendas/all-vendas.component';
+import { CadastroComponent } from './views/usuarios/cadastro/cadastro.component';
+import { CompraComponent } from './views/compra/compra.component';
+import { CadastroVendedorComponent } from './views/vendedores/cadastro-vendedor/cadastro-vendedor.component';
+import { AlunosComponent } from '../app/views/alunos/alunos.component';
+import { CursosComponent } from './views/cursos/cursos.component';
+import { VendedoresComponent } from './views/vendedores/vendedores.component';
+import { AllVendasComponent } from './views/all-vendas/all-vendas.component';
 
 const routes: Routes = [
   ///////DEFOULT/////
@@ -28,11 +27,6 @@ const routes: Routes = [
     component: CadastroComponent,
   },
 
-  ////////MODULO DE INICIO/////
-  {
-    path: 'inicio',
-    component: InicioComponent,
-  },
 
   ////////BOTÔES/////////
   {
@@ -56,8 +50,8 @@ const routes: Routes = [
     component: AllVendasComponent,
   },
   {
-    path: 'vender',
-    component: VendasComponent,
+    path: 'compra',
+    component: CompraComponent,
   },
 ];
 

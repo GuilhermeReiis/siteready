@@ -1,12 +1,32 @@
+button{
+    margin:10px
+}
+
+
 mat-toolbar{
     background-color: #263238;
     /* width: 100%; */
     
 }
 
+mat-drawer-inner-container ng-tns-c282-0{
+    background-color: #263238;
+}
+
+#welcome{
+    color: aliceblue;
+}
+
 .img{
     background-color: #6AEBA0;
 }
-mat-sidenav{
-    width: 100px;
+
+mat-drawer{
+    background-color: #263238;
+}
+
+mat-list-item{
+    background-color: #6AEBA0;
+    margin: 10px;
+    border-radius: 10px;
 }

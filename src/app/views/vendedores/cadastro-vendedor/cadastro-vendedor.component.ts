@@ -52,6 +52,7 @@ export class CadastroVendedorComponent implements OnInit {
           console.log(res);
           localStorage.setItem("token", res.token);
           this._snackBar.open("Usuario cadstrado com sucesso!");
+          window.location.reload()
       },
       (err) => {
         

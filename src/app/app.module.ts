@@ -19,7 +19,7 @@ import { AlterarVendaComponent } from './views/compra/alterar-venda/alterar-vend
 import { VendedoresComponent } from './views/vendedores/vendedores.component';
 import { CadastroVendedorComponent } from './views/vendedores/cadastro-vendedor/cadastro-vendedor.component';
 
-import { AlterarUserComponent } from './views/usuarios/alterar-user/alterar-user.component';
+import { AlterarUserComponent } from './views/vendedores/alterar-user/alterar-user.component';
 
 import { CompraComponent } from './views/compra/compra.component';
 import { CadastroComponent } from './views/usuarios/cadastro/cadastro.component';

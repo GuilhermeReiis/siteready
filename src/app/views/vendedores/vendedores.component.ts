@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { emailMask } from 'text-mask-addons';
 
-import { AlterarUserComponent } from '../usuarios/alterar-user/alterar-user.component';
+import { AlterarUserComponent } from './alterar-user/alterar-user.component';
 import { TaskService } from '../../services/task.service';
 
 
@@ -41,7 +41,6 @@ export class VendedoresComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.searchUser().subscribe((res) => {
       this.dataSource.data = res.user;
-      console.log(this.dataSource.data)
     });
   }
 

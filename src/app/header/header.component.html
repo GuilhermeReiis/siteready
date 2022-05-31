@@ -20,7 +20,14 @@
   <mat-drawer id="scroll" mode="over" closed #drawer>
     <mat-list role="list">
       <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
-      <img src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
+      <img id="astro" src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
+
+        <mat-list-item>
+          <button mat-list-item routerLink="/vendas">
+            <mat-icon>shop</mat-icon>VENDAS
+          </button>
+        </mat-list-item>
+      
         <mat-list-item>
           <button mat-list-item routerLink="/alunos">
             <mat-icon>supervisor_account</mat-icon>ALUNOS
@@ -40,10 +47,11 @@
         </mat-list-item>
 
         <mat-list-item>
-          <button mat-list-item routerLink="/vender">
+          <button mat-list-item routerLink="/compra">
             <mat-icon>credit_card</mat-icon>COMPRA
           </button>
         </mat-list-item>
+
 
       </mat-list>
   </mat-drawer>

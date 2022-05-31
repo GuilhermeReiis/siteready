@@ -44,7 +44,6 @@ export class AlterarUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   toggleAdmiro() {}
@@ -54,10 +53,9 @@ export class AlterarUserComponent implements OnInit {
 
   send() {
     this.isSubmitted = true;
-    console.log(this.user.value);
     this.authService.alterarUser(this.user.value, this.data._id).subscribe(
       (res) => {
-        console.log(res);
+
         localStorage.setItem("token", res.token);
         
       },

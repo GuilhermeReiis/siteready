@@ -1,132 +1,22 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="ALUNO">
+   
 
-<!-- ////////////////////////////////////////////////// -->
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Aluno</mat-label>
-    <input
-      type="text"
-      placeholder="Selecione um aluno"
-      aria-label="Number"
-      matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-    />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let student of students"
-        [value]="student.name"
-        (click)="checkStudent(student)"
-      >
-        {{ student.name }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-<!-- /////////////////////////////////////////////////// -->
-<div *ngIf="!isStudentExist" class="centeralizar1">
-  <h3>POR FAVOR ESCOLHA UM ALUNO PARA PROSEGUIR!</h3>
-  <img id="STRONER" src="../../assets/astronaut-suit-animate.svg" alt="" />
-</div>
 
-<ng-template [ngIf]="isStudentExist">
-  <img
-    *ngIf="isStudentExist"
-    id="img"
-    src="../../assets/search (2).png"
-    alt="lupa"
-  />
-  <input
-    *ngIf="isStudentExist"
-    autocomplete="off"
-    matInput
-    (keyup)="applyFilter($event)"
-    placeholder="curso, valor"
-    #input
-    id="filtro"
-  />
-  <br />
+    <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let aluno">{{aluno.name}}</td>
+      </ng-container>
+    
+    
 
-  <table
-    *ngIf="isStudentExist"
-    (submit)="send()"
-    mat-table
-    [dataSource]="dataSource"
-    class="mat-elevation-z8 demo-table"
-  >
-    <!-- Position Column -->
-    <ng-container matColumnDef="curso">
-      <th mat-header-cell *matHeaderCellDef>Curso</th>
-      <td mat-cell *matCellDef="let curso">{{ curso.curso }}</td>
-    </ng-container>
+    </table>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="duracao">
-      <th mat-header-cell *matHeaderCellDef>Tempo</th>
-      <td mat-cell *matCellDef="let curso">{{ curso.duracao }} Anos</td>
-    </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="valor">
-      <th mat-header-cell *matHeaderCellDef>Valor</th>
-      <td mat-cell *matCellDef="let curso">R$ {{ curso.valor }}</td>
-    </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      (click)="addAndRemoveClassRow(row, !row.enabled)"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
-      *matRowDef="let row; columns: displayedColumns"
-    ></tr>
-  </table>
-
-  <p>subtotal: {{ subtotal }}</p>
-</ng-template>
-
-<div *ngIf="isStudentExist" class="money">
-  <mat-form-field
-    id="valorPago"
-    [formGroup]="form"
-    appearance="outline"
-    floatLabel="always"
-  >
-    <mat-label>Valor a Pagar</mat-label>
-    <input
-      matInput
-      type="number"
-      class="example-right-align"
-      formControlName="paidValue"
-      (input)="calculoTroco()"
-    />
-    <span matPrefix>$&nbsp;</span>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" floatLabel="always" [formGroup]="form">
-    <mat-label>Troco</mat-label>
-    <input
-      matInput
-      type="number"
-      class="example-right-align"
-      placeholder="0"
-      formControlName="troco"
-    />
-    <span matPrefix>$&nbsp;</span>
-  </mat-form-field>
-</div>
-
-<footer>
-  <mat-toolbar *ngIf="isStudentExist">
-    <div class="demo-button-container">
-      <div class="vender">
-        <button
-          (click)="openDialog()"
-          mat-raised-button
-          class="demo-button ADICIONAR"
-          [disabled]="form.get('troco')?.value < 0 || clickedRows.size === 0"
-        >
-          VENDER
-        </button>
-      </div>
-    </div>
-  </mat-toolbar>
-</footer>
+  </mat-tab>
+  <mat-tab label="Second">Content 2</mat-tab>
+  <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>

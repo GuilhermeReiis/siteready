@@ -53,6 +53,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TextMaskModule } from 'angular2-text-mask';
+import {MatStepperModule} from '@angular/material/stepper';
+import { DoBootstrap } from '@angular/core';
+
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -60,6 +63,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { AlterarAlunosComponent } from './views/alunos/alterar-aluno/alterar-aluno.component';
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @NgModule({
   declarations: [
@@ -123,6 +127,10 @@ import { UsuariosComponent } from './views/usuarios/usuarios.component';
     TextMaskModule,
     MatDividerModule,
     MatListModule,
+    MatStepperModule,
+    AccordionModule.forRoot(),
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

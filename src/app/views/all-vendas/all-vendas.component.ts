@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TaskService } from '../../services/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { AlterarVendaComponent } from '../compra/alterar-venda/alterar-venda.component';
+import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 export interface PeriodicElement {
@@ -22,7 +22,7 @@ export class AllVendasComponent implements OnInit {
   aluno: any;
   usuario: any;
   clickedRows = new Set<PeriodicElement>();
-  vendas: any = [];
+
   displayedColumns: string[] = ['vendedor', 'aluno', 'idVenda', 'edit'];
 
   showFiller = false;
@@ -30,12 +30,11 @@ export class AllVendasComponent implements OnInit {
   showCursos = false;
   showAlunos = false;
   showCadastroVend = false;
-  showVendedores =false;
+  showVendedores = false;
   showAllVendas = true;
 
-
   constructor(
-    private router: Router, 
+    private router: Router,
     private taskServices: TaskService,
     public dialog: MatDialog,
     public ngxChartsModule: NgxChartsModule,
@@ -45,7 +44,7 @@ export class AllVendasComponent implements OnInit {
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res) => {
       this.dataSource.data = res.venda;
-      // console.log(res.venda);
+      console.log(res.venda);
     });
 
     this.taskServices.getAlunos().subscribe((res) => {
@@ -59,10 +58,11 @@ export class AllVendasComponent implements OnInit {
     });
   }
 
-  gotoAllVendas() {
-    this.router.navigateByUrl('/vendas')
+  changerBuy(vendas: any) {
+    this.router.navigate(['/compra'], {
+      queryParams: { venda: JSON.stringify(vendas) },
+    });
   }
-
 
   openAlterarVenda(venda: any): void {
     this.clickedRows.clear();
@@ -78,7 +78,6 @@ export class AllVendasComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();
     });
-    
   }
   deleteVenda(element: any) {
     this.clickedRows.clear();
@@ -102,5 +101,5 @@ export class AllVendasComponent implements OnInit {
         console.log(err.error);
       }
     );
-  } 
+  }
 }

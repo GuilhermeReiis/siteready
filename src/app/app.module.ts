@@ -14,7 +14,7 @@ import { CadastroCursosComponent } from './views/cursos/cadastro-cursos/cadastro
 import { AlterarCursosComponent } from './views/cursos/alterar-cursos/alterar-cursos.component';
 
 import { AllVendasComponent } from './views/all-vendas/all-vendas.component';
-import { AlterarVendaComponent } from './views/compra/alterar-venda/alterar-venda.component';
+import { AlterarVendaComponent } from './views/all-vendas/alterar-venda/alterar-venda.component';
 
 import { VendedoresComponent } from './views/vendedores/vendedores.component';
 import { CadastroVendedorComponent } from './views/vendedores/cadastro-vendedor/cadastro-vendedor.component';

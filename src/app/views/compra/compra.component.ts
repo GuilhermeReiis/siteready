@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { __values } from 'tslib';
+import { ActivatedRoute } from '@angular/router';
 
 ///////////////////////////////////////////////
 
@@ -23,6 +24,8 @@ import { PeriodicElement } from '../alunos/alunos.component';
   styleUrls: ['./compra.component.css']
 })
 export class CompraComponent implements OnInit {
+
+  changerBuy: any
 
   selectedCourses: PeriodicElement[] = [];
   form!: FormGroup;
@@ -54,6 +57,7 @@ export class CompraComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private taskServices: TaskService
   ) {
@@ -66,6 +70,18 @@ export class CompraComponent implements OnInit {
 
   
   ngOnInit(): void {
+    
+  this.changerBuy = JSON.parse(this.activatedRoute.snapshot.queryParams['venda'])
+  console.log(this.changerBuy)
+  // aluno: {curso: Array(2), _id: '628b8eb4d0635c2ae429ec2e', name: 'lucas', email: 'lucas@gmail.com', age: 22, …}
+  // createdAt: "2022-05-23T13:54:00.385Z"
+  // curso: (2) [{…}, {…}]
+  // troco: 0
+  // updatedAt: "2022-05-23T13:54:00.385Z"
+  // vendedor: {id: '627e56765dc80b69390926de', name: 'Guilherme meu nome', email: 'adm@gmail.com'}
+  // __v: 0
+  // _id: "628b91f8d0635c2ae429ecd9"
+    //////////////
     this.taskServices.getTasks().subscribe((res) => {
       this.allCourses = res.cursos;
       this.dataSource.data = this.allCourses;
@@ -80,7 +96,9 @@ export class CompraComponent implements OnInit {
         startWith(''),
         map((value) => this._filter(value))
       );
+
     });
+    
   }
   ////////////////fltto de aluno////////////
   private _filter(value: string): string[] {

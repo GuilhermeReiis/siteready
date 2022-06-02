@@ -1,16 +1,47 @@
-
-
-
-/* ALUNO */
+/* global */
 table{
     width: 100%;
     height: auto;
 }
+button{
+    margin: 10px;
+}
+
+/* ALUNO */
 .mat-row:hover .mat-cell {
     color: aliceblue;
     background-color: #263238;
 }
-.selected{
-    color: aliceblue;
+
+/* FINALIZAR */
+.finalizar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+mat-card{
     background-color: #263238;
+    color: aliceblue;
+}
+.matChips{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.valorAndAluno{
+    
+    flex-direction: row;
+    margin: 10px;
+}
+#chips{
+    background-color: #6AEBA0;
+}
+
+#red{
+    background-color: #D91B0B;
+}
+
+#green{
+    background-color: #6AEBA0;
 }

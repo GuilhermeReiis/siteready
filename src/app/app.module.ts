@@ -30,6 +30,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxMaskModule } from 'ngx-mask';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 import { AlunosComponent } from '../app/views/alunos/alunos.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -119,6 +121,7 @@ import { VendedoresComponent } from './views/vendedores/vendedores.component';
     MatListModule,
     MatStepperModule,
     AccordionModule.forRoot(),
+    MatChipsModule,
     
     
   ],

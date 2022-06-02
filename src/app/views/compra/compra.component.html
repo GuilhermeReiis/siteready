@@ -1,12 +1,7 @@
-<mat-tab-group class="center" mat-align-tabs="center">
-  <mat-tab  label="ALUNO">
-    
-
-
+<mat-stepper class="center" mat-align-tabs="center" #step>
+  <mat-step label="ALUNO">
+    <h2>Selecione o aluno!</h2>
     <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
-    
-
-     
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Aluno</th>
         <td mat-cell *matCellDef="let aluno">{{ aluno.name }}</td>
@@ -14,99 +9,127 @@
 
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef>Idade</th>
-        <td mat-cell *matCellDef="let aluno">{{aluno.age}}</td>
+        <td mat-cell *matCellDef="let aluno">{{ aluno.age }}</td>
       </ng-container>
-    
-      
+
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let aluno">{{ aluno.email }}</td>
       </ng-container>
-    
-    
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
-          mat-row
-          (click)="clickedRows.add(row)"
-          [class.demo-row-is-clicked]="clickedRows.has(row)"
-          *matRowDef="let row; columns: displayedColumns;"
+        mat-row
+        (click)="selectAluno(step, row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns"
       ></tr>
     </table>
-    
-    <div>
-      <h3>
-        Click Log
-      </h3>
-    </div>
-    
-    <div *ngIf="!clickedRows.size">
-      Clicked rows will be logged here
-    </div>
-    
-    <ul>
-      <li *ngFor="let clickedRow of clickedRows">
-        Clicked on {{clickedRow.name}}
-      </li>
-    </ul>
-    
+  </mat-step>
+  <mat-step label="CURSO">
+    <button id="red" mat-button matStepperPrevious>Back</button>
+    <button
+      id="green"
+      mat-button
+      matStepperNext
+      (click)="selectCursos(selection)"
+    >
+      Next
+    </button>
 
-  </mat-tab>
-  <mat-tab label="CURSO">
+    <mat-card>Aluno: {{ alunoSelecionado?.name }}</mat-card>
+    <br />
+    <h3>Valor a pagar: R$ {{valorTotal}}</h3>
 
-
-    
     <table mat-table [dataSource]="cursos" class="mat-elevation-z8">
-
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
+          <mat-checkbox
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          >
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+          >
           </mat-checkbox>
         </td>
       </ng-container>
-    
+
       <!-- Position Column -->
       <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef> Cursos </th>
-        <td mat-cell *matCellDef="let curso"> {{curso.curso}} </td>
+        <th mat-header-cell *matHeaderCellDef>Cursos</th>
+        <td mat-cell *matCellDef="let curso">{{ curso.curso }}</td>
       </ng-container>
-    
+
       <!-- Name Column -->
       <ng-container matColumnDef="duracao">
-        <th mat-header-cell *matHeaderCellDef> Duração </th>
-        <td mat-cell *matCellDef="let curso"> {{curso.duracao}} </td>
+        <th mat-header-cell *matHeaderCellDef>Duração</th>
+        <td mat-cell *matCellDef="let curso">{{ curso.duracao }} /Anos</td>
       </ng-container>
-    
+
       <!-- Weight Column -->
       <ng-container matColumnDef="valor">
-        <th mat-header-cell *matHeaderCellDef> Valor </th>
-        <td mat-cell *matCellDef="let curso"> {{curso.valor}} </td>
+        <th mat-header-cell *matHeaderCellDef>Valor</th>
+        <td mat-cell *matCellDef="let curso">R$ {{ curso.valor }}</td>
       </ng-container>
-    
+
       <!-- Symbol Column -->
       <ng-container matColumnDef="modalidade">
-        <th mat-header-cell *matHeaderCellDef> Modalidade </th>
-        <td mat-cell *matCellDef="let curso"> {{curso.modalidade}} </td>
+        <th mat-header-cell *matHeaderCellDef>Modalidade</th>
+        <td mat-cell *matCellDef="let curso">{{ curso.modalidade }}</td>
       </ng-container>
-    
+
       <tr mat-header-row *matHeaderRowDef="displayedColumnsCursos"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnsCursos;"
-          (click)="selection.toggle(row)">
-      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumnsCursos"
+        (click)="selectOneCourse(selection, row)"
+      ></tr>
     </table>
-    
+  </mat-step>
+  <mat-step label="FINALIZAR">
+    <button id="red" matStepperPrevious mat-button>Cacelar</button>
+    <button
+      [disabled]="!alunoSelecionado && !cursosSelecionados"
+      id="green"
+      mat-button
+    >
+      Confirmar
+    </button>
+    <!-- ALUNO -->
+    <div class="finalizar">
+      <mat-card class="card"
+        >Aluno selecionado: {{ alunoSelecionado?.name }}</mat-card
+      >
+      <br />
+      <!-- Cursos selecionados -->
+      <div class="matChips">
+        <mat-chip-list
+          *ngFor="let curso of cursosSelecionados"
+          aria-label="Fish selection"
+        >
+          <mat-chip id="chips">{{ curso.curso }}</mat-chip>
+        </mat-chip-list>
+      </div>
 
-
-  </mat-tab>
-  <mat-tab label="FINALIZAR">Content 3</mat-tab>
-</mat-tab-group>
+      <!-- total -->
+      <mat-card class="card">Valor Total: 78888</mat-card>
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label></mat-label>
+          <input matInput />
+        </mat-form-field>
+      </form>
+      <mat-card class="card">Troco: 11111</mat-card>
+    </div>
+  </mat-step>
+</mat-stepper>

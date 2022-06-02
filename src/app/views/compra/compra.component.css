@@ -1,0 +1,16 @@
+
+
+
+/* ALUNO */
+table{
+    width: 100%;
+    height: auto;
+}
+.mat-row:hover .mat-cell {
+    color: aliceblue;
+    background-color: #263238;
+}
+.selected{
+    color: aliceblue;
+    background-color: #263238;
+}

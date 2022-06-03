@@ -101,4 +101,8 @@ export class CompraComponent implements OnInit {
     console.log(this.valorTotal);
     return this.valorTotal;
   }
+
+  fsad(){
+    console.log(22424242)
+  }
 }

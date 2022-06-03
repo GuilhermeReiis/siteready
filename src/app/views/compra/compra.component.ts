@@ -6,6 +6,8 @@ import { Aluno } from 'src/app/interface/aluno';
 import { Curso } from 'src/app/interface/curso';
 import { MatStepper } from '@angular/material/stepper';
 import { select } from 'd3-selection';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Venda } from 'src/app/interface/venda';
 
 @Component({
   selector: 'app-compra',
@@ -19,7 +21,9 @@ export class CompraComponent implements OnInit {
   alunoSelecionado!: any;
   cursosSelecionados: any = [];
   valorTotal = 0;
-  
+  valorPago = 0;
+  troco = 0;
+  venda!: FormGroup;
 
   //Cursos
   selection = new SelectionModel<Curso>(true, []);
@@ -34,8 +38,18 @@ export class CompraComponent implements OnInit {
   ];
   clickedRows = new Set<Aluno>();
 
-  constructor(private taskServices: TaskService) {}
-
+  constructor(private taskServices: TaskService,
+    private fb: FormBuilder
+    ) {
+    this.venda = this.fb.group({
+      curso: [],
+      aluno: [],
+      valor: [],
+      troco: [''],
+      vendedor: [''],
+    });
+  }
+  
   ngOnInit(): void {
     // Get alunos
     this.taskServices.getAlunos().subscribe((res) => {
@@ -46,20 +60,41 @@ export class CompraComponent implements OnInit {
     this.taskServices.getTasks().subscribe((res) => {
       this.cursos = res.cursos;
     });
+
+    // Formulario de envio da venda
+    this.venda = this.fb.group({
+      curso: [this.cursosSelecionados],
+      aluno: [this.alunoSelecionado],
+      valor: [this.valorTotal],
+      troco: [''],
+      vendedor: [''],
+    });
   }
 
   // ALUNO//////////////////////
   selectAluno(teste: MatStepper, row: any) {
     this.alunoSelecionado = row;
+    this.venda.get('aluno')?.setValue(row);
+    console.log(this.venda.get('aluno')?.value)
     teste.next();
-    console.log(row);
+
     return this.alunoSelecionado;
   }
   selectOneCourse(selection: any, row: any) {
     selection.toggle(row);
-    let valorSomado =  Array.from(selection._selection)
-    console.log(valorSomado[0]);
-    this.valorTotal += row.valor;
+
+    
+    const initialValue = 0;
+    let courseSelecteds = Array.from(selection._selection);
+    
+    this.venda.get('curso')?.setValue(courseSelecteds);
+    console.log(this.venda.get('curso')?.value)
+    this.valorTotal = courseSelecteds.reduce(
+      (previousValue: any, currentValue: any) =>
+        previousValue + currentValue.valor,
+      initialValue
+    ) as any;
+    console.log(this.valorTotal)
   }
 
   //CURSOS//////////////
@@ -95,14 +130,9 @@ export class CompraComponent implements OnInit {
     }`;
   }
 
-  soma(row: any) {
-    this.valorTotal += row.valor;
-
+  somaTroco() {
     console.log(this.valorTotal);
-    return this.valorTotal;
+    this.troco = -(this.valorTotal - this.valorPago);
   }
 
-  fsad(){
-    console.log(22424242)
-  }
 }

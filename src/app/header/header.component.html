@@ -4,7 +4,6 @@
     mat-icon-button
     class="img"
     (click)="drawer.toggle()"
-    
   >
     <mat-icon>menu</mat-icon>
   </button>
@@ -18,44 +17,40 @@
 </mat-toolbar>
 <mat-drawer-container class="example-container">
   <mat-drawer id="scroll" mode="over" closed #drawer>
-    <mat-list role="list">
-      <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
-      <img id="astro" src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
-
-        <mat-list-item>
-          <button mat-list-item routerLink="/vendas">
-            <mat-icon>shop</mat-icon>VENDAS
-          </button>
-        </mat-list-item>
+    <div class="opcoes">
+      <mat-list role="list">
+        <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
+        <img id="astro" src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
+          <mat-list-item>
+            <button mat-list-item routerLink="/vendas">
+              <mat-icon>shop</mat-icon>VENDAS
+            </button>
+          </mat-list-item>
       
-        <mat-list-item>
-          <button mat-list-item routerLink="/alunos">
-            <mat-icon>supervisor_account</mat-icon>ALUNOS
-          </button>
-        </mat-list-item>
-
-        <mat-list-item>
-          <button mat-list-item routerLink="/cursos">
-            <mat-icon>school</mat-icon>CURSOS
-          </button>
-        </mat-list-item>
-
-        <mat-list-item>
-          <button mat-list-item routerLink="/vendedores">
-            <mat-icon>perm_identity</mat-icon>VENDEDORES
-          </button>
-        </mat-list-item>
-
-        <mat-list-item>
-          <button mat-list-item routerLink="/compra">
-            <mat-icon>credit_card</mat-icon>COMPRA
-          </button>
-        </mat-list-item>
-
-
-      </mat-list>
+          <mat-list-item>
+            <button mat-list-item routerLink="/alunos">
+              <mat-icon>supervisor_account</mat-icon>ALUNOS
+            </button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-list-item routerLink="/cursos">
+              <mat-icon>school</mat-icon>CURSOS
+            </button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-list-item routerLink="/vendedores">
+              <mat-icon>perm_identity</mat-icon>VENDEDORES
+            </button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-list-item routerLink="/compra">
+              <mat-icon>credit_card</mat-icon>COMPRA
+            </button>
+          </mat-list-item>
+        </mat-list>
+    </div>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content class="router">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

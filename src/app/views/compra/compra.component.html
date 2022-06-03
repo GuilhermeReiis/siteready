@@ -1,4 +1,4 @@
-<mat-stepper class="center" mat-align-tabs="center" #step>
+<mat-stepper [formGroup]="venda" class="center" mat-align-tabs="center" #step>
   <mat-step label="ALUNO">
     <h2>Selecione o aluno!</h2>
     <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
@@ -122,14 +122,14 @@
       </div>
 
       <!-- total -->
-      <mat-card class="card">Valor Total: 78888</mat-card>
+      <mat-card class="card">Valor Total: R${{valorTotal}}</mat-card>
       <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label></mat-label>
-          <input matInput />
+        <mat-form-field  class="example-full-width" appearance="outline">
+          <mat-label>Digite o Valor</mat-label>
+          <input  matInput="valorPago" (keyup)="somaTroco()" value="{{valorPago}}">
         </mat-form-field>
       </form>
-      <mat-card class="card">Troco: 11111</mat-card>
+      <mat-card class="card">Troco: {{troco}}</mat-card>
     </div>
   </mat-step>
 </mat-stepper>

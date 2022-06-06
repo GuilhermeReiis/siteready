@@ -21,23 +21,23 @@
       <mat-list role="list">
         <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
         <img  id="astro" src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
-          <mat-list-item>
-            <button mat-list-item routerLink="/vendas">
+          <mat-list-item *ngIf="isAdmin">
+            <button  mat-list-item routerLink="/vendas">
               <mat-icon  >shop</mat-icon>VENDAS
             </button>
           </mat-list-item>
       
-          <mat-list-item>
+          <mat-list-item >
             <button mat-list-item routerLink="/alunos">
               <mat-icon>supervisor_account</mat-icon>ALUNOS
             </button>
           </mat-list-item>
-          <mat-list-item>
+          <mat-list-item >
             <button mat-list-item routerLink="/cursos">
               <mat-icon>school</mat-icon>CURSOS
             </button>
           </mat-list-item>
-          <mat-list-item>
+          <mat-list-item >
             <button mat-list-item routerLink="/vendedores">
               <mat-icon>perm_identity</mat-icon>VENDEDORES
             </button>

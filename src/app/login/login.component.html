@@ -1,35 +1,32 @@
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Press+Start+2P&family=Rubik+Wet+Paint&display=swap");
-</style>
-<div class="centralizar">
-  <div class="painel">
-    <form [formGroup]="user" (submit)="signIn()">
-      <div class="on_dados">
-        <p class="text">EMAIL</p>
-        <input
-          (click)="closeSnackBar()"
-          formControlName="email"
-          id="email"
-          class="entrada"
-          type="email"
-        />
-        <p class="text">SENHA</p>
-        <input
-          (click)="closeSnackBar()"
-          formControlName="password"
-          id="senha"
-          class="entrada"
-          type="password"
-        />
-      </div>
-      <div class="check-box">
-        <input type="checkbox" />
-        <p id="text-check">SALVAR LOGIN</p>
-      </div>
-      <div class="button">
-        <button id="login"><mat-icon>send</mat-icon>LOGIN</button>
-        <button id="voltar" routerLink="">VOLTAR</button>
-      </div>
+
+
+  
+ 
+<mat-grid-list cols="1" rowHeight="2:1">
+  <mat-grid-tile>
+<mat-card class="card">
+  
+  <mat-card-content>
+    <form [formGroup]="user" (submit)="signIn()" class="example-form">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" type="email" matInput >
+      </mat-form-field>
+      <mat-divider
+        [vertical]="true">
+      </mat-divider>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input formControlName="password" type="password" matInput >
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-button id="voltar" routerLink="">VOLTAR</button>
+        <button mat-button (click)="signIn()" id="login"><mat-icon>send</mat-icon>LOGIN</button>
+      </mat-card-actions>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
+
+  </mat-grid-tile>
+  
+</mat-grid-list>

@@ -1,0 +1,24 @@
+
+#PDFs{
+    display: flex;
+    justify-content: center;
+    
+}
+
+mat-dialog-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+mat-card{
+    margin: 10px;
+}
+
+#close{
+    background-color: #E82505;
+}
+
+#download{
+    background-color: #6AEBA0;
+}

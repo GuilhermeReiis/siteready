@@ -16,14 +16,14 @@
   </button>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
-  <mat-drawer id="scroll" mode="side" closed #drawer>
+  <mat-drawer id="scroll" mode="over" closed #drawer>
     <div class="opcoes">
       <mat-list role="list">
         <h4 id="welcome">Bem Vindo {{ this.usuario }}</h4>
         <img  id="astro" src="../../assets/astronaut-helmet-animate.svg" alt="astronauta" />
           <mat-list-item>
             <button mat-list-item routerLink="/vendas">
-              <mat-icon>shop</mat-icon>VENDAS
+              <mat-icon  >shop</mat-icon>VENDAS
             </button>
           </mat-list-item>
       

@@ -1,0 +1,26 @@
+
+  <div id="PDFs">
+    <mat-dialog-content class="mat-typography">
+      <mat-card>ALUNO: {{data.aluno.name}}</mat-card>
+      <mat-divider></mat-divider>
+      <mat-card>VENDEDOR: {{data.vendedor.name}}</mat-card>
+      <h2>Cursos adquiridos:</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let data of data.curso" >{{data.curso}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <h2><br></h2>
+      <mat-list>
+        <mat-list-item>Valor Total: {{data.valor}}</mat-list-item>
+        <mat-list-item>Valor Pago: {{data.valorPg}}</mat-list-item>
+        <mat-list-item>Troco: {{data.troco}}</mat-list-item>
+  
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-dialog-content>
+  </div>
+  <mat-dialog-actions align="end">
+    <button id="close" mat-button mat-dialog-close>Fechar</button>
+    <button id="download" mat-button  (click)="convertToPdf()" [mat-dialog-close]="true" cdkFocusInitial><mat-icon>download</mat-icon>Baixar</button>
+  </mat-dialog-actions>
+

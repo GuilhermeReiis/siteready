@@ -53,6 +53,7 @@ import { UsuariosComponent } from './views/usuarios/usuarios.component';
 import { AlterarUserComponent } from './views/vendedores/alterar-user/alterar-user.component';
 import { CadastroVendedorComponent } from './views/vendedores/cadastro-vendedor/cadastro-vendedor.component';
 import { VendedoresComponent } from './views/vendedores/vendedores.component';
+import { PDFComponent } from './pdf/pdf.component';
 
 
 
@@ -85,6 +86,7 @@ import { VendedoresComponent } from './views/vendedores/vendedores.component';
     HeaderComponent,
     CompraComponent,
     UsuariosComponent,
+    PDFComponent,
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,7 @@ export class CompraComponent implements OnInit {
     'modalidade',
   ];
   clickedRows = new Set<Aluno>();
+  dataSource: any;
 
   constructor(
     private taskServices: TaskService,
@@ -156,15 +157,21 @@ export class CompraComponent implements OnInit {
 
   somaTroco() {
     this.venda.patchValue({
+      
       troco: this.venda.value.valorPg - this.valorTotal,
     });
   }
 
   sendSell() {
     this.isSubmitted = true;
+    this.venda.patchValue({
+      
+      valor: this.valorTotal,
+    })
 
     this.taskServices.addVenda(this.venda.value).subscribe(
       (res) => {
+        console.log(this.venda.value)
         this._snackBar.open('Venda finalizada com sucesso!!', 'Fechar', {
           duration: 2000,
         });
@@ -190,4 +197,6 @@ export class CompraComponent implements OnInit {
       parseFloat(this.valorTotal.toString())
     );
   }
+
+  
 }

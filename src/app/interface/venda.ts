@@ -3,5 +3,7 @@ export interface Venda {
     aluno: {};
     curso: [];
     vendedor: {};
+    valor: number,
+    valorPg: number,
     troco: number;
 }

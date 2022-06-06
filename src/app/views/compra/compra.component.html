@@ -1,6 +1,8 @@
 <mat-stepper class="center" mat-align-tabs="center" #step>
+  
   <mat-step label="ALUNO">
     <mat-card class="card">Vendedor: {{ venda.value.vendedor.name }}</mat-card>
+   
     <h2>Selecione o aluno!</h2>
     <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="name">
@@ -99,9 +101,9 @@
     </table>
   </mat-step>
   <mat-step *ngIf="valorTotal > 0 && venda.value.aluno" label="FINALIZAR">
-    <button id="red" matStepperPrevious mat-button>Cacelar</button>
+    <button id="red" matStepperPrevious mat-button><mat-icon> cancel_presentation</mat-icon>Cacelar</button>
     <button id="green" mat-button (click)="sendSell()" 
-    [disabled]="disable()">
+    [disabled]="disable()"><mat-icon>send</mat-icon>
       Confirmar
     </button>
     <!-- ALUNO -->

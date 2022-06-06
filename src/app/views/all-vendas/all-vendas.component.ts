@@ -6,6 +6,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AlterarVendaComponent } from './alterar-venda/alterar-venda.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { jsPDF } from 'jspdf';
+import { PDFComponent } from 'src/app/pdf/pdf.component';
 export interface PeriodicElement {
   vendedor: string;
   aluno: string;
@@ -23,7 +25,7 @@ export class AllVendasComponent implements OnInit {
   usuario: any;
   clickedRows = new Set<PeriodicElement>();
 
-  displayedColumns: string[] = ['vendedor', 'aluno', 'idVenda', 'edit'];
+  displayedColumns: string[] = ['vendedor', 'aluno', 'idVenda', 'PDF', 'edit'];
 
   showFiller = false;
   showVendas = false;
@@ -41,10 +43,22 @@ export class AllVendasComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  openDialog(venda: any) {
+    const dialogRef = this.dialog.open(PDFComponent, {
+      panelClass: 'teste',
+      data: venda,
+    });
+    
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   ngOnInit(): void {
     this.taskServices.getVendas().subscribe((res) => {
       this.dataSource.data = res.venda;
-      console.log(res.venda);
+      // console.log(res.venda);
     });
 
     this.taskServices.getAlunos().subscribe((res) => {
@@ -56,6 +70,18 @@ export class AllVendasComponent implements OnInit {
       this.usuario = res.usuario;
       // console.log(res.usuario);
     });
+  }
+
+  printPDF() {
+    console.log('pdf');
+    const doc = new jsPDF({
+      orientation: 'landscape',
+      unit: 'in',
+      format: [4, 2],
+    });
+
+    doc.text('Hello world!', 1, 1);
+    doc.save('two-by-four.pdf');
   }
 
   changerBuy(vendas: any) {

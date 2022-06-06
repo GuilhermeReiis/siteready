@@ -24,6 +24,15 @@
         <td mat-cell *matCellDef="let venda">{{ venda._id }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="PDF">
+        <th mat-header-cell *matHeaderCellDef>PDF</th>
+        <td mat-cell *matCellDef="let venda">
+          <button (click)="openDialog(venda)" mat-list-item >
+            <mat-icon>description</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>Editar</th>
         <td mat-cell *matCellDef="let vendas">
@@ -32,15 +41,14 @@
             class="demo-button ALTERAR"
             (click)="changerBuy(vendas)"
           >
-            ALTERAR
+          <mat-icon>edit</mat-icon>
           </button>
 
           <button
             mat-raised-button
             (click)="deleteVenda(vendas)"
             class="demo-button REMOVER"
-          >
-            REMOVER
+          ><mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>

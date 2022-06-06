@@ -1,5 +1,6 @@
 <mat-stepper class="center" mat-align-tabs="center" #step>
   <mat-step label="ALUNO">
+    <mat-card class="card">Vendedor: {{ venda.value.vendedor.name }}</mat-card>
     <h2>Selecione o aluno!</h2>
     <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="name">
@@ -33,13 +34,14 @@
       mat-button
       matStepperNext
       (click)="selectCursos(selection)"
+      [disabled]="!valorTotal"
     >
       Next
     </button>
 
     <mat-card>Aluno: {{ alunoSelecionado?.name }}</mat-card>
     <br />
-    <h3>Valor a pagar: R$ {{valorTotal}}</h3>
+    <h3>Valor a pagar: R$ {{ valorTotal }}</h3>
 
     <table mat-table [dataSource]="cursos" class="mat-elevation-z8">
       <!-- Checkbox Column -->
@@ -96,13 +98,10 @@
       ></tr>
     </table>
   </mat-step>
-  <mat-step label="FINALIZAR">
+  <mat-step *ngIf="valorTotal > 0 && venda.value.aluno" label="FINALIZAR">
     <button id="red" matStepperPrevious mat-button>Cacelar</button>
-    <button
-      [disabled]="!alunoSelecionado && !cursosSelecionados"
-      id="green"
-      mat-button
-    >
+    <button id="green" mat-button (click)="sendSell()" 
+    [disabled]="disable()">
       Confirmar
     </button>
     <!-- ALUNO -->
@@ -122,14 +121,14 @@
       </div>
 
       <!-- total -->
-      <mat-card class="card">Valor Total: R${{valorTotal}}</mat-card>
-      <form class="example-form">
-        <mat-form-field  class="example-full-width" appearance="outline">
+      <mat-card class="card">Valor Total: R${{ valorTotal }}</mat-card>
+      <form [formGroup]="venda" class="example-form">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Digite o Valor</mat-label>
-          <input  matInput="valorPago" (keyup)="somaTroco()" value="{{valorPago}}">
+          <input formControlName="valorPg" matInput (keyup)="somaTroco()" />
         </mat-form-field>
       </form>
-      <mat-card class="card">Troco: {{troco}}</mat-card>
+      <mat-card class="card">Troco: {{ venda.value.troco }}</mat-card>
     </div>
   </mat-step>
 </mat-stepper>

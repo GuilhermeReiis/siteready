@@ -1,25 +1,20 @@
 <mat-stepper class="center" mat-align-tabs="center" #step>
-  
   <mat-step label="ALUNO">
     <mat-card class="card">Vendedor: {{ venda.value.vendedor.name }}</mat-card>
-   
     <h2>Selecione o aluno!</h2>
     <table mat-table [dataSource]="alunos" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Aluno</th>
         <td mat-cell *matCellDef="let aluno">{{ aluno.name }}</td>
       </ng-container>
-
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef>Idade</th>
         <td mat-cell *matCellDef="let aluno">{{ aluno.age }}</td>
       </ng-container>
-
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let aluno">{{ aluno.email }}</td>
       </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
@@ -40,11 +35,9 @@
     >
       Next
     </button>
-
     <mat-card>Aluno: {{ alunoSelecionado?.name }}</mat-card>
     <br />
     <h3>Valor a pagar: R$ {{ valorTotal }}</h3>
-
     <table mat-table [dataSource]="cursos" class="mat-elevation-z8">
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
@@ -67,25 +60,21 @@
           </mat-checkbox>
         </td>
       </ng-container>
-
       <!-- Position Column -->
       <ng-container matColumnDef="curso">
         <th mat-header-cell *matHeaderCellDef>Cursos</th>
         <td mat-cell *matCellDef="let curso">{{ curso.curso }}</td>
       </ng-container>
-
       <!-- Name Column -->
       <ng-container matColumnDef="duracao">
         <th mat-header-cell *matHeaderCellDef>Duração</th>
         <td mat-cell *matCellDef="let curso">{{ curso.duracao }} /Anos</td>
       </ng-container>
-
       <!-- Weight Column -->
       <ng-container matColumnDef="valor">
         <th mat-header-cell *matHeaderCellDef>Valor</th>
         <td mat-cell *matCellDef="let curso">R$ {{ curso.valor }}</td>
       </ng-container>
-
       <!-- Symbol Column -->
       <ng-container matColumnDef="modalidade">
         <th mat-header-cell *matHeaderCellDef>Modalidade</th>
@@ -101,9 +90,11 @@
     </table>
   </mat-step>
   <mat-step *ngIf="valorTotal > 0 && venda.value.aluno" label="FINALIZAR">
-    <button id="red" matStepperPrevious mat-button><mat-icon> cancel_presentation</mat-icon>Cacelar</button>
-    <button id="green" mat-button (click)="sendSell()" 
-    [disabled]="disable()"><mat-icon>send</mat-icon>
+    <button id="red" matStepperPrevious mat-button>
+      <mat-icon> cancel_presentation</mat-icon>Cacelar
+    </button>
+    <button id="green" mat-button (click)="sendSell()" [disabled]="disable()">
+      <mat-icon>send</mat-icon>
       Confirmar
     </button>
     <!-- ALUNO -->
@@ -121,7 +112,6 @@
           <mat-chip id="chips">{{ curso.curso }}</mat-chip>
         </mat-chip-list>
       </div>
-
       <!-- total -->
       <mat-card class="card">Valor Total: R${{ valorTotal }}</mat-card>
       <form [formGroup]="venda" class="example-form">

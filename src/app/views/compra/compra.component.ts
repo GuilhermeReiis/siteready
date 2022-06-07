@@ -16,6 +16,9 @@ import { Venda } from 'src/app/interface/venda';
 import { LocalStorageService } from 'src/app/local-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { colorSets } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-compra',
@@ -47,14 +50,18 @@ export class CompraComponent implements OnInit {
   ];
   clickedRows = new Set<Aluno>();
   dataSource: any;
+  changerSell: any;
 
   constructor(
     private taskServices: TaskService,
     private fBuilder: FormBuilder,
     private localStorage: LocalStorageService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    
   ) {
+
     this.venda = this.fBuilder.group({
       curso: [''],
       aluno: [''],
@@ -64,24 +71,50 @@ export class CompraComponent implements OnInit {
       vendedor: [''],
     });
   }
-
+  
   ngOnInit(): void {
+    this.changerSell = this.activatedRoute.snapshot.queryParams['venda'];
+    
+    if(this.changerSell){
+      this.changerSell = JSON.parse(this.changerSell)
+      this.venda = this.fBuilder.group({
+        curso: this.changerSell.curso,
+        aluno: this.changerSell.aluno,
+        valor: this.changerSell.valor,
+        valorPg: this.changerSell.valorPg,
+        troco: this.changerSell.troco,
+        vendedor: this.changerSell.vendedor
+      });
+      console.log(this.changerSell)
+      console.log(this.venda)
+
+    }else{
+      console.log('nao chegou')
+      console.log(this.changerSell)
+      console.log(this.venda)
+    }
+
+    setTimeout(() => {
+      
+    }, 1000)
+
+    
     // Get alunos
     this.taskServices.getAlunos().subscribe((res) => {
       this.alunos = res.aluno;
     });
-
+    
     //Get Cursos
     this.taskServices.getTasks().subscribe((res) => {
       this.cursos = res.cursos;
     });
-
+    
     //Get Vendedor
     this.venda.patchValue({
       vendedor: JSON.parse(window.localStorage.getItem('user')!)?.user,
     });
-    console.log(this.venda);
-
+    
+    
     // Formulario de envio da venda
     // this.venda = this.fb.group({
     //   curso: [this.cursosSelecionados],
@@ -91,6 +124,8 @@ export class CompraComponent implements OnInit {
     //   troco: [''],
     //   vendedor: [''],
     // });
+
+    
   }
 
   // ALUNO//////////////////////

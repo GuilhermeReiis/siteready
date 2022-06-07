@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { jsPDF } from 'jspdf';
 import { PDFComponent } from 'src/app/pdf/pdf.component';
+import { CompraComponent } from '../compra/compra.component';  
 export interface PeriodicElement {
   vendedor: string;
   aluno: string;
@@ -85,8 +86,9 @@ export class AllVendasComponent implements OnInit {
   }
 
   changerBuy(vendas: any) {
+    this.router.navigate(['/compra'])
     this.router.navigate(['/compra'], {
-      queryParams: { venda: JSON.stringify(vendas) },
+     queryParams: { venda: JSON.stringify(vendas) },
     });
   }
 
